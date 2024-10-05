@@ -2,6 +2,12 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+from helper_functions.utility import check_password  
+
+# Check if the password is correct.  
+if not check_password():  
+    st.stop()
+
 # Project page title
 st.set_page_config(
     page_title="CPF Policies Guide",
