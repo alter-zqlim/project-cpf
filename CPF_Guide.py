@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+from helper_functions.utility import check_password  
 
 # Project page title
 st.set_page_config(
@@ -21,6 +22,9 @@ Always consult with qualified professionals for accurate and personalised advice
 
 expander = st.expander(":red[Disclaimer]", True)
 expander.write(EXPANDER_NOTICE)
+
+if not check_password():  
+    st.stop()
 
 # Give the main page a header
 st.write("# Welcome to your friendly guide on understanding CPF policies")
