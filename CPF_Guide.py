@@ -3,13 +3,23 @@ import pandas as pd
 import numpy as np
 from helper_functions.utility import check_password  
 
-# Project page title
+# for query
+from langchain_chroma import Chroma
+from langchain_community.document_loaders import WebBaseLoader
+from langchain_openai import OpenAIEmbeddings
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+from langchain.retrievers.multi_query import MultiQueryRetriever
+from langchain_openai import ChatOpenAI
+
+
+# project page <title>
 st.set_page_config(
     page_title="CPF Policies Guide",
     page_icon=":material/group:",
 )
 
-# Mandatory disclaimer for project
+# mandatory disclaimer for project
 EXPANDER_NOTICE = """
 **IMPORTANT NOTICE**: This web application is a prototype developed for **educational purposes** only.
 The information provided here is **NOT intended for real-world usage** and should not be relied upon for making any decisions, especially those related to financial, legal, or healthcare matters.
@@ -26,11 +36,35 @@ expander.write(EXPANDER_NOTICE)
 if not check_password():  
     st.stop()
 
-# Give the main page a header
+# main page header
 st.write("# Welcome to your friendly guide on understanding CPF policies")
 
-# Manifest sidebar
+# manifest sidebar
 st.sidebar.success("Select a demo above.")
+
+
+# Load blog post
+loader = WebBaseLoader("https://lilianweng.github.io/posts/2023-06-23-agent/")
+data = loader.load()
+
+# Split
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0)
+splits = text_splitter.split_documents(data)
+
+# VectorDB
+embedding = OpenAIEmbeddings()
+vectordb = Chroma.from_documents(documents=splits, embedding=embedding)
+
+"""
+question = "What are the approaches to Task Decomposition?"
+llm = ChatOpenAI(temperature=0)
+retriever_from_llm = MultiQueryRetriever.from_llm(
+    retriever=vectordb.as_retriever(), llm=llm
+)
+"""
+
+
+
 
 st.markdown(
     """
