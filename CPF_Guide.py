@@ -6,7 +6,7 @@ from helper_functions.utility import check_password
 
 
 # for query
-from langchain_chroma import Chroma
+from langchain_chroma.vectorstores import Chroma
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
