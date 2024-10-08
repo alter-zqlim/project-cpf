@@ -4,6 +4,10 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import tiktoken
 
+# all your passwords are belong to us (Open AI)
+KEY_OPENAI = st.secrets['KEY_OPENAI_API']
+client = OpenAI(api_key = KEY_OPENAI)
+
 # generate embedding
 def get_embedding(input, model = 'text-embedding-3-small'):
     response = client.embeddings.create(
