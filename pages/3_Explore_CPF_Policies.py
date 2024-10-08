@@ -19,7 +19,7 @@ form = st.form(key = "form")
 form.subheader("Prompt")
 
 user_prompt = form.text_area(
-    "Enter your prompt here", 
+    "What queries about CPF policies do you have?", 
     height = 160
 )
 
