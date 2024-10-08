@@ -82,3 +82,14 @@ for page in pages:
 
 st.write(f"There are total of {np.sum(list_of_tokencounts)} tokens")
 
+text_splitter = RecursiveCharacterTextSplitter(
+    separators=["\n\n", "\n", " ", ""],
+    chunk_size=500,
+    chunk_overlap=50,
+    length_function=count_tokens
+)
+
+splitted_documents = text_splitter.split_documents(pages)
+
+st.write(len(splitted_documents))
+st.write(splitted_documents[17])
