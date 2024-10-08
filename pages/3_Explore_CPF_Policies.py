@@ -14,3 +14,15 @@ st.write(
 # password checkpoint
 if not check_password():  
     st.stop()
+
+form = st.form(key = "form")
+form.subheader("Prompt")
+
+user_prompt = form.text_area(
+    "Enter your prompt here", 
+    height = 160
+)
+
+if form.form_submit_button("Submit"):
+    st.toast("User Input Submitted - {user_prompt}")
+    print(f"User Input is {user_prompt}")
