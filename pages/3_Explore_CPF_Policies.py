@@ -1,5 +1,6 @@
 import streamlit as st
 from helper_functions.utility import check_password
+from helper_functions import llm
 
 st.set_page_config(
     page_title = "Explore CPF Policies",
@@ -16,13 +17,15 @@ if not check_password():
     st.stop()
 
 form = st.form(key = "form")
-form.subheader("Prompt")
+form.subheader("What would you like to know about CPF policies?")
 
 user_prompt = form.text_area(
-    "What queries about CPF policies do you have?", 
+    "Enter your query here", 
     height = 160
 )
 
 if form.form_submit_button("Submit"):
     st.toast(f"User Input Submitted - {user_prompt}")
+    response = llm.get_completion(user_prompt)
+    st.write(response)
     print(f"User Input is {user_prompt}")
