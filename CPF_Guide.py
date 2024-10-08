@@ -36,9 +36,9 @@ expander.write(EXPANDER_NOTICE)
 st.write("# Welcome to your friendly guide on understanding CPF policies")
 
 # manifest sidebar
-st.sidebar.success("Select a demo above.")
+# st.sidebar.success("Select a demo above.")
 
-
+"""
 # Load blog post
 loader = WebBaseLoader("https://lilianweng.github.io/posts/2023-06-23-agent/")
 data = loader.load()
@@ -51,7 +51,6 @@ splits = text_splitter.split_documents(data)
 embedding = OpenAIEmbeddings()
 vectordb = Chroma.from_documents(documents=splits, embedding=embedding)
 
-"""
 question = "What are the approaches to Task Decomposition?"
 llm = ChatOpenAI(temperature=0)
 retriever_from_llm = MultiQueryRetriever.from_llm(
