@@ -11,3 +11,10 @@ loader = PyPDFLoader("https://www.developer.tech.gov.sg/products/collections/dat
 pages = loader.load()
 
 st.write(pages[0])
+
+
+# embedding model that we will use for the session
+embeddings_model = OpenAIEmbeddings(model='text-embedding-3-small')
+
+# llm to be used in RAG pipeplines in this notebook
+llm = ChatOpenAI(model='gpt-4o-mini', temperature=0, seed=42)
