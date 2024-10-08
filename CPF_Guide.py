@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import langchain
-from helper_functions.utility import check_password  
-
 
 # for query
 from langchain_community.vectorstores import Chroma
@@ -34,9 +31,6 @@ Always consult with qualified professionals for accurate and personalised advice
 
 expander = st.expander(":red[Disclaimer]", True)
 expander.write(EXPANDER_NOTICE)
-
-if not check_password():  
-    st.stop()
 
 # main page header
 st.write("# Welcome to your friendly guide on understanding CPF policies")
