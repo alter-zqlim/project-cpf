@@ -70,6 +70,7 @@ def count_tokens_from_message(messages):
 # all your passwords are belong to us (Open AI)
 KEY_OPENAI = st.secrets['KEY_OPENAI_API']
 client = OpenAI(api_key = KEY_OPENAI)
+embeddings_model = OpenAIEmbeddings(model='text-embedding-3-small')
 
 loader = PyPDFLoader("https://www.developer.tech.gov.sg/products/collections/data-science-and-artificial-intelligence/playbooks/prompt-engineering-playbook-beta-v3.pdf")
 pages = loader.load()
@@ -96,3 +97,5 @@ splitted_documents = text_splitter.split_documents(pages)
 
 st.write(len(splitted_documents))
 st.write(splitted_documents[17])
+
+# db = Chroma.from_documents(splitted_documents, embeddings_model, persist_directory="./chroma_db")
