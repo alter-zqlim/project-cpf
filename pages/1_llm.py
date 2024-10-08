@@ -1,4 +1,5 @@
 import streamlit as st
+import numpy as np
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -71,4 +72,13 @@ loader = PyPDFLoader("https://www.developer.tech.gov.sg/products/collections/dat
 pages = loader.load()
 
 st.write(pages[0])
+
+# Let's count how many token are there
+# by summing all the token counts from every page
+# Don't worry about understand the code in this cell
+list_of_tokencounts = []
+for page in pages:
+    list_of_tokencounts.append(count_tokens(page.page_content))
+
+st.write(f"There are total of {np.sum(list_of_tokencounts)} tokens")
 
