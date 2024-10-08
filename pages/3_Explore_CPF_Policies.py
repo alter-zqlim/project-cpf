@@ -20,7 +20,7 @@ form = st.form(key = "form")
 form.subheader("What would you like to know about CPF policies?")
 
 user_prompt = form.text_area(
-    "Enter your query here", 
+    "Please enter your query below", 
     height = 160
 )
 
