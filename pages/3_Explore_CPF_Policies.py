@@ -36,3 +36,5 @@ file_path = "./data/CPFB_CPFIS.pdf"
 loader = PyPDFLoader(file_path)
 docs = loader.load()
 st.write(len(docs))
+st.write(docs[0].page_content[0:100])
+st.write(docs[0].metadata)
