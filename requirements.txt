@@ -25,7 +25,7 @@ langchain-core
 langchain-experimental==0.3.2
 langchain-openai==0.2.2
 langchain-text-splitters==0.3.0
-langsmith==0.1.132
+langsmith
 marshmallow==3.22.0
 mmh3==5.0.1
 monotonic==1.6
