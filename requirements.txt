@@ -8,3 +8,4 @@ langchain-experimental
 pandas
 pypdf
 chromadb 
+protobuf==3.20.*
