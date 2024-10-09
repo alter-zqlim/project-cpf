@@ -42,7 +42,7 @@ text_splitter = RecursiveCharacterTextSplitter(
 splits = text_splitter.split_documents(docs)
 vectorstore = InMemoryVectorStore.from_documents(
     documents = splits,
-    embedding = OpenAIEmbeddings(model = 'text-embedding-3-small')
+    embedding = OpenAIEmbeddings(model = 'text-embedding-3-small', api_key = st.secrets['KEY_OPENAI_API'])
 )
 
 retriever = vectorstore.as_retriever()
