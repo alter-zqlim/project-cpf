@@ -11,6 +11,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
+from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import CharacterTextSplitter
 
@@ -101,10 +102,5 @@ splitted_documents = text_splitter.split_documents(pages)
 st.write(len(splitted_documents))
 st.write(splitted_documents[17])
 
-db = Chroma.from_documents(
-    splitted_documents,
-    embeddings_model,
-    persist_directory = "./chroma_db"
-)
-
-st.write(db._collection.count())
+loader_web = WebBaseLoader("https://lilianweng.github.io/posts/2023-06-23-agent/")
+data = loader_web.load()
