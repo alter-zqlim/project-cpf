@@ -32,7 +32,7 @@ if form.form_submit_button("Submit"):
     print(f"User Input is {user_prompt}")
 
 
-file_path = "../data/CPFB_CPFIS.pdf"
+file_path = "./data/CPFB_CPFIS.pdf"
 loader = PyPDFLoader(file_path)
 docs = loader.load()
 st.write(len(docs))
