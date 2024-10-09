@@ -50,7 +50,7 @@ pysqlite3-binary
 python-dotenv==1.0.1
 requests-toolbelt==1.0.0
 smmap==5.0.1
-starlette==0.38.6
+starlette
 streamlit==1.39.0
 tenacity==8.5.0
 tiktoken==0.8.0
