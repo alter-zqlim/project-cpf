@@ -104,3 +104,7 @@ st.write(splitted_documents[17])
 
 loader_web = WebBaseLoader("https://lilianweng.github.io/posts/2023-06-23-agent/")
 data = loader_web.load()
+splitted_data = text_splitter.split_documents(data)
+
+embedding = OpenAIEmbeddings()
+vectordb = Chroma.from_documents(documents=splitted_data, embedding=embeddings_model)
