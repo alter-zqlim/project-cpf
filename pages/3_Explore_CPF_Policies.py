@@ -77,5 +77,5 @@ user_prompt = form.text_area(
 
 if form.form_submit_button("Submit"):
     st.toast(f"User Input Submitted - {user_prompt}")
-    response = rag_chain.invoke({user_prompt})
+    response = rag_chain.invoke({"input": user_prompt})
     st.write(response)
