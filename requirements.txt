@@ -45,6 +45,7 @@ pydantic-settings==2.5.2
 pydeck==0.9.1
 pypdf==5.0.1
 PyPika==0.48.9
+pysqlite3-binary
 python-dotenv==1.0.1
 requests-toolbelt==1.0.0
 smmap==5.0.1
