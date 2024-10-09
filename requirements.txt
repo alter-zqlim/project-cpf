@@ -42,7 +42,7 @@ opentelemetry-util-http==0.48b0
 orjson==3.10.7
 overrides==7.7.0
 posthog==3.7.0
-pydantic-settings==2.5.2
+pydantic-settings
 pydeck==0.9.1
 pypdf==5.0.1
 PyPika==0.48.9
