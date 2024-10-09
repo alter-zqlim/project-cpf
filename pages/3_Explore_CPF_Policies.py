@@ -3,6 +3,12 @@ from helper_functions.utility import check_password
 from helper_functions import llm
 from langchain_community.document_loaders import PyPDFLoader
 
+from langchain_openai import ChatOpenAI
+from langchain_core.vectorstores import InMemoryVectorStore
+from langchain_openai import OpenAIEmbeddings
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+llmodel = ChatOpenAI(model = "gpt-4o-mini")
+
 st.set_page_config(
     page_title = "Explore CPF Policies",
     page_icon=":material/group:"
