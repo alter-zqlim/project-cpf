@@ -12,6 +12,8 @@ from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 
+from openai import OpenAI
+
 KEY_OPENAI = st.secrets['KEY_OPENAI_API']
 client = OpenAI(api_key = KEY_OPENAI)
 llmodel = ChatOpenAI(model = "gpt-4o-mini")
