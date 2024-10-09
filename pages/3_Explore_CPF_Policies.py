@@ -8,6 +8,8 @@ from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
+from langchain.chains import create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 
 llmodel = ChatOpenAI(model = "gpt-4o-mini")
@@ -55,6 +57,16 @@ system_prompt = (
     "{context}"
 )
 
+prompt = ChatPromptTemplate.from_messages(
+    [
+        ("system", system_prompt),
+        ("human", "{input}"),
+    ]
+)
+
+question_answer_chain = create_stuff_documents_chain(llm, prompt)
+rag_chain = create_retrieval_chain(retriever, question_answer_chain)
+
 form = st.form(key = "form")
 form.subheader("What would you like to know about CPF policies?")
 
@@ -67,4 +79,3 @@ if form.form_submit_button("Submit"):
     st.toast(f"User Input Submitted - {user_prompt}")
     response = llm.get_completion(user_prompt)
     st.write(response)
-    print(f"User Input is {user_prompt}")
