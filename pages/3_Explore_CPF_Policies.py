@@ -1,6 +1,7 @@
 import streamlit as st
 from helper_functions.utility import check_password
 from helper_functions import llm
+from langchain_community.document_loaders import PyPDFLoader
 
 st.set_page_config(
     page_title = "Explore CPF Policies",
@@ -29,3 +30,9 @@ if form.form_submit_button("Submit"):
     response = llm.get_completion(user_prompt)
     st.write(response)
     print(f"User Input is {user_prompt}")
+
+
+file_path = "../data/CPFB_CPFIS.pdf"
+loader = PyPDFLoader(file_path)
+docs = loader.load()
+st.write(len(docs))
