@@ -1,7 +1,7 @@
 asgiref==3.8.1
 backoff==2.2.1
 bcrypt==4.2.0
-chroma-hnswlib==0.7.6
+chroma-hnswlib
 chromadb
 coloredlogs==15.0.1
 dataclasses-json==0.6.7
