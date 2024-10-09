@@ -64,8 +64,8 @@ prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-# question_answer_chain = create_stuff_documents_chain(llm, prompt)
-# rag_chain = create_retrieval_chain(retriever, question_answer_chain)
+question_answer_chain = create_stuff_documents_chain(llmodel, prompt)
+rag_chain = create_retrieval_chain(retriever, question_answer_chain)
 
 form = st.form(key = "form")
 form.subheader("What would you like to know about CPF policies?")
