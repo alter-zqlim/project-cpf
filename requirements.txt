@@ -7,6 +7,4 @@ langchain-openai
 langchain-experimental
 pandas
 pypdf
-chromadb==0.5.12
-protobuf==3.20.*
-pysqlite3
+chromadb==0.3.21
