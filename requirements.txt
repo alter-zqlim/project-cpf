@@ -7,4 +7,3 @@ langchain-openai
 langchain-experimental
 pandas
 pypdf
-chromadb==0.5.12
