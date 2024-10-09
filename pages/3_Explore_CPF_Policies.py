@@ -12,11 +12,7 @@ from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 
-from openai import OpenAI
-
-KEY_OPENAI = st.secrets['KEY_OPENAI_API']
-client = OpenAI(api_key = KEY_OPENAI)
-llmodel = ChatOpenAI(model = "gpt-4o-mini")
+llmodel = ChatOpenAI(model = "gpt-4o-mini", api_key = st.secrets['KEY_OPENAI_API'])
 
 st.set_page_config(
     page_title = "Explore CPF Policies",
