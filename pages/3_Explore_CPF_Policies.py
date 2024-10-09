@@ -45,4 +45,10 @@ st.write(len(docs))
 st.write(docs[0].page_content[0:100])
 st.write(docs[0].metadata)
 
-st.write(llm.client)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size = 1000, chunk_overlap = 200)
+splits = text_splitter.split_documents(docs)
+vectorstore = InMemoryVectorStore.from_documents(
+    documents = splits, embedding = OpenAIEmbeddings(model='text-embedding-3-small')
+)
+
+retriever = vectorstore.as_retriever()
