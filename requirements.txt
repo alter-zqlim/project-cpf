@@ -22,7 +22,7 @@ kubernetes==31.0.0
 langchain
 langchain-community
 langchain-core
-langchain-experimental==0.3.2
+langchain-experimental
 langchain-openai==0.2.2
 langchain-text-splitters==0.3.0
 langsmith
