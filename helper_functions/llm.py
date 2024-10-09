@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import tiktoken
 
-# all your passwords are belong to us (Open AI)
+# all your (Open AI) password are belong to us
 KEY_OPENAI = st.secrets['KEY_OPENAI_API']
 client = OpenAI(api_key = KEY_OPENAI)
 
