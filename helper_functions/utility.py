@@ -2,12 +2,7 @@ import streamlit as st
 import random  
 import hmac  
 
-# """  
-# This file contains the common components used in the Streamlit App.  
-# This includes the sidebar, the title, the footer, and the password check.  
-# """  
-
-# function: check password input against Streamlit Secrets 
+# check password input against Streamlit Secrets 
 def check_password():  
     # returns True if user entered correct password  
     def password_entered():  
