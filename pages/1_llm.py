@@ -17,9 +17,6 @@ from langchain_text_splitters import CharacterTextSplitter
 
 from langchain_community.document_loaders import PyPDFLoader
 
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 # generate embedding
 def get_embedding(input, model = 'text-embedding-3-small'):
