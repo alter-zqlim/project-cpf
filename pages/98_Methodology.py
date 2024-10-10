@@ -11,3 +11,8 @@ st.subheader("A flowchart illustrating the process flow for each of the use case
 st.subheader("For example, if the application has two main use cases: a) chat with information and b) intelligent search, each of these use cases should have its own flowchart.")
 st.subheader("Refer to the sample here")
 st.subheader("Links to an external site. for the samples of the flowcharts and methodology (Slide 13, 14, and 15).")
+
+st.image(
+    "./asset/street.jpg",
+    caption = "Watercolour ink image of a flooded post-apocalyptic street lined with abandoned shophouses of varying heights and sizes. The sky is cloudy and rust red."
+)
