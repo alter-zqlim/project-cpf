@@ -1,6 +1,6 @@
 [theme]
 # "light" or "dark".
-base = "light"
+base = "dark"
 
 # primary accent color
 primaryColor = "9EE894"
