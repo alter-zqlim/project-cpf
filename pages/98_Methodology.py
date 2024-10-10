@@ -13,7 +13,7 @@ st.subheader("Refer to the sample here")
 st.subheader("Links to an external site. for the samples of the flowcharts and methodology (Slide 13, 14, and 15).")
 
 st.image(
-    "../assets/street.jpg",
+    "./assets/street.jpg",
     caption = "Watercolour ink image of a flooded post-apocalyptic street lined with abandoned shophouses of varying heights and sizes. The sky is cloudy and rust red."
 )
 st.write("Watercolour ink image of a flooded post-apocalyptic street lined with abandoned shophouses of varying heights and sizes. The sky is cloudy and rust red.")
