@@ -6,7 +6,7 @@ base = "dark"
 primaryColor = "9EE894"
 
 # Background color for the main content area.
-# backgroundColor =
+backgroundColor = "EFEF33"
 
 # Background color used for the sidebar and most interactive widgets.
 # secondaryBackgroundColor = "89E3FF"
