@@ -18,7 +18,7 @@ if not check_password():
 
 @st.cache_data
 def get_GeBIZ_data():
-    df = pd.read_csv(".assets/GovernmentProcurementviaGeBIZ.csv")
+    df = pd.read_csv(".data/GovernmentProcurementviaGeBIZ.csv")
     return df.set_index("agency")
 
 df = get_GeBIZ_data()
