@@ -18,11 +18,12 @@ if not check_password():
 
 @st.cache_data
 def get_GeBIZ_data():
-    df = pd.read_csv("./data/GovernmentProcurementviaGeBIZ.csv")
-    return df.set_index("agency")
+    unsorted_df = pd.read_csv("./data/GovernmentProcurementviaGeBIZ.csv")
+    return unsorted_df.set_index("agency")
 
-df = get_GeBIZ_data()
-df_index = df[~df.index.duplicated(keep='first')]
+unsorted_df = get_GeBIZ_data()
+df = unsorted_df.sort_values(by = 'agency')
+df_index = df[~df.index.duplicated(keep = 'first')]
 
 agencies = st.multiselect(
     "Select agencies",
@@ -33,21 +34,6 @@ if not agencies:
     st.error("Please select at least one agency.")
 else:
     data = df.loc[agencies]
-    st.write("## All procurement projects", data.sort_index())
+    st.write("## Procurement projects", data.sort_index())
 
     data = data.T.reset_index()
-    """
-    data = pd.melt(data, id_vars=["index"]).rename(
-        columns={"index": "year", "value": "Gross Agricultural Product ($B)"}
-    )
-    chart = (
-        alt.Chart(data)
-        .mark_area(opacity=0.3)
-        .encode(
-            x="year:T",
-            y=alt.Y("Gross Agricultural Product ($B):Q", stack=None),
-            color="Region:N",
-        )
-    )
-    st.altair_chart(chart, use_container_width=True)
-    """
