@@ -36,4 +36,4 @@ else:
     data = df.loc[agencies]
     st.write("## Procurement projects", data.sort_index())
 
-    data = data.T.reset_index()
+    # data = data.T.reset_index()
