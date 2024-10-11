@@ -22,7 +22,7 @@ def get_GeBIZ_data():
     return unsorted_df.set_index("agency")
 
 unsorted_df = get_GeBIZ_data()
-df = unsorted_df.sort_values(by = 'agency')
+df = unsorted_df.sort_values(by = ['agency', 'tender_no', 'supplier_name', 'award_date'])
 df_index = df[~df.index.duplicated(keep = 'first')]
 
 agencies = st.multiselect(
