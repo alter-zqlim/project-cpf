@@ -15,3 +15,8 @@ st.write(
 # password checkpoint
 if not check_password():  
     st.stop()
+
+@st.cache_data
+def get_GeBIZ_data():
+    df = pd.read_csv(".assets/GovernmentProcurementviaGeBIZ.csv")
+    return df.set_index("agency")
