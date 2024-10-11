@@ -31,5 +31,6 @@ if not agencies:
     st.error("Please select at least one agency.")
 else:
     data = df.loc[agencies]
-    data /= 1000000.0
-    st.write("### Gross Agricultural Production ($B)", data.sort_index())
+    st.write("## All procurement projects", data.sort_index())
+
+    data = data.T.reset_index()
