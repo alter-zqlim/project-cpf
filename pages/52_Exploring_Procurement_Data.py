@@ -52,5 +52,5 @@ user_input = form.text_area(
 # on detecting Submit, processes and writes response to user input
 if form.form_submit_button("Submit"):
     st.toast(f"User Input Submitted - {user_input}")
-    response = llm.generate_response_based_on_procurement_data(user_input, df)
+    response = llm.generate_response_based_on_procurement_data(user_input, unsorted_df)
     st.write(response[1])
