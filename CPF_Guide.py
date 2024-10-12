@@ -33,7 +33,9 @@ expander = st.expander(":red[Disclaimer]", True)
 expander.write(EXPANDER_NOTICE)
 
 # main page header
-st.write("# Welcome to your friendly guide on understanding CPF policies")
+st.write("# For businesses: How to go about providing goods and services to the government")
+st.write("Hello Entrepreneur! Congratulations on setting up your business and we hope you see ever increasing sales! We hope that through this web application, you can learn more about transacting with the government to deliver goods and services!")
+st.write("Please be advised that there are *NO* procurement opportunities on this web application. Head over to https://www.gebiz.gov.sg/ to search for those opportunities.")
 
 # manifest sidebar
 # st.sidebar.success("Select a demo above.")
