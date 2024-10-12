@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from helper_functions.utility import check_password
+from helper_functions import utility
 from helper_functions import llm
 
 st.set_page_config(
@@ -14,7 +14,7 @@ st.write(
 )
 
 # password checkpoint
-if not check_password():  
+if not utility.check_password():  
     st.stop()
 
 @st.cache_data
