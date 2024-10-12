@@ -1,9 +1,6 @@
 [theme]
-# "light" or "dark".
-base = "dark"
-
-# primary accent color
-# primaryColor = "9EE894"
+base = "dark"  # "light" or "dark"
+primaryColor = "0040A8"  # primary accent color
 
 # Background color for the main content area.
 # backgroundColor = "EFEF33"
