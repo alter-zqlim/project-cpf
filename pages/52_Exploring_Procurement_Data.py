@@ -58,5 +58,5 @@ user_prompt = form.text_area(
 
 if form.form_submit_button("Submit"):
     st.toast(f"User Input Submitted - {user_prompt}")
-    response = process_user_message(user_prompt)
+    response = llm.get_completion(user_prompt)
     st.write("answer")
