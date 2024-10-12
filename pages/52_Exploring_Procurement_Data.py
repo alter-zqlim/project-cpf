@@ -40,23 +40,12 @@ else:
     data = df.loc[agencies]
     st.write("## Procurement projects", data.sort_index())
 
-
-def process_user_message(user_input):
-    delimiter = "```"
-    answer = ""
-    # check_for_malicious_intent
-    if llm.check_for_malicious_intent(user_input) == 'Y':
-        answer = "We are unable to process your request. Please rephrase your query or try a different query."
-    else:
-        answer = "Thank you for your query!"
-    return answer
-
 # generate a form for user input
 form = st.form(key = "form")
 form.subheader("What would you like to know about the above GeBiz procurement data from FY2019 to FY2023?")
 
 user_input = form.text_area(
-    "Please enter your query below", 
+    "Please enter your query below and press Submit", 
     height = 160
 )
 
