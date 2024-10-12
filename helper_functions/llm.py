@@ -58,6 +58,7 @@ def count_tokens_from_message(messages):
     value = ' '.join([x.get('content') for x in messages])
     return len(encoding.encode(value))
 
+# function: categorise user query by pre-defined types
 def check_query_type(user_query):
     system_prompt = """\
     First, read the <incoming-message> carefully. Try to understand the main issue or question raised by the user.
@@ -77,6 +78,48 @@ def check_query_type(user_query):
         {"role": "user", "content": f"<incoming-message>{user_query}</incoming-message>"}
     ]
     return get_completion_by_messages(messages)
+
+
+def generate_response_based_on_procurement_data(user_query, procurement_data):
+    step_delimiter = "####"
+    system_message = f"""
+    Follow these steps to answer the user query.
+    The user query is delimited with a pair <incoming-message> tags.
+
+    Step 1:{step_delimiter} Understand the relevant procurement data from the information enclosed by the <procurement_data> tags.
+    <procurement_data>
+    {procurement_data}
+    </procurement_data>
+
+    Step 2:{step_delimiter} Use the information about the procurement data to generate the answer for the customer's query. 
+    You must only rely on the facts or information in the procurement data.
+    Your response should be as detail and elaborated as possible and include information that is useful for the user to better understand the procurement data.
+
+    Step 3:{step_delimiter}: Answer the user in a friendly tone.
+    Make sure the statements are factually accurate.
+    Your response should be comprehensive and informative to help the the user to make their decision.
+    Complete with details such as awarded value, agency, and tender details.
+    Use Neural Linguistic Programming to construct your response.
+
+    Use the following format:
+    Step 1:{step_delimiter} <step 1 reasoning>
+    Step 2:{step_delimiter} <step 2 reasoning>
+    Step 3:{step_delimiter} <step 3 reasoning>
+    Response to user:{step_delimiter} <response to user>
+
+    Make sure to include {step_delimiter} to separate every step.
+    """
+
+    messages =  [
+        {"role": "system", "content": system_message},
+        {"role": "user", "content": f"<incoming-message>{user_query}</incoming-message>"}
+    ]
+
+    full_response = get_completion_from_messages(messages, max_tokens = 3500)
+    final_response = full_response.split(step_delimiter)[-1]
+    return final_response, full_response
+
+
 
 # function: check for malicious intent
 def check_for_malicious_intent(user_message):
