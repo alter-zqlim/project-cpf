@@ -17,15 +17,18 @@ st.write(
 if not utility.check_password():  
     st.stop()
 
+# function: read GeBiz data file, set index to "agency"
 @st.cache_data
 def get_GeBIZ_data():
     unsorted_df = pd.read_csv("./data/GovernmentProcurementviaGeBIZ.csv")
     return unsorted_df.set_index("agency")
 
+# read GeBiz data file, set index to "agency", sort by specified columns, construct index with unique values
 unsorted_df = get_GeBIZ_data()
 df = unsorted_df.sort_values(by = ['agency', 'tender_no', 'supplier_name', 'award_date'])
 df_index = df[~df.index.duplicated(keep = 'first')]
 
+# generate a multi-option selector that displays data based on selected agencies  
 agencies = st.multiselect(
     "Select agencies",
     list(df_index.index),
@@ -48,15 +51,17 @@ def process_user_message(user_input):
         answer = "Thank you for your query!"
     return answer
 
+# generate a form for user input
 form = st.form(key = "form")
 form.subheader("What would you like to know about the above GeBiz procurement data from FY2019 to FY2023?")
 
-user_prompt = form.text_area(
+user_input = form.text_area(
     "Please enter your query below", 
     height = 160
 )
 
+# on detecting Submit, processes and writes response to user input
 if form.form_submit_button("Submit"):
-    st.toast(f"User Input Submitted - {user_prompt}")
-    response = llm.get_completion(user_prompt)
+    st.toast(f"User Input Submitted - {user_input}")
+    response = llm.get_completion(user_input)
     st.write(response)
