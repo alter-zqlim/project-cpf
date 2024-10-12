@@ -12,7 +12,7 @@ st.subheader("Objectives", divider = True)
 st.subheader("Features", divider = True)
 
 st.subheader("Data sources", divider = True)
-st.write("Government Procurement via GeBIZ - Dataset of all open tenders put out by government agencies since FY2019. (retrieved via data.gov.sg on 11 October 2024)")
+st.write("Government Procurement via GeBIZ &mdash;\ Dataset of all open tenders put out by government agencies since FY2019. (retrieved via data.gov.sg on 11 October 2024)")
 st.write("Government Procurement - https://www.mof.gov.sg/policies/government-procurement (linked on 12 October 2024)")
 st.write("Guide to Singapore Procurement - https://www.gebiz.gov.sg/singapore-government-procurement-regime.html (linked on 12 October 2024) and related documents:")
 st.write("-- Government Procurement Guide for Suppliers")
