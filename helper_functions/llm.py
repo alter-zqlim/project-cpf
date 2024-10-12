@@ -5,11 +5,11 @@ from openai import OpenAI
 import tiktoken
 
 # all your (Open AI) password are belong to us
-KEY_OPENAI = st.secrets['KEY_OPENAI_API']
+KEY_OPENAI = st.secrets["KEY_OPENAI_API"]
 client = OpenAI(api_key = KEY_OPENAI)
 
 # function: generate embedding
-def get_embedding(input, model = 'text-embedding-3-small'):
+def get_embedding(input, model = "text-embedding-3-small"):
     response = client.embeddings.create(
         input = input,
         model = model
@@ -57,6 +57,26 @@ def count_tokens_from_message(messages):
     encoding = tiktoken.encoding_for_model('gpt-4o-mini')
     value = ' '.join([x.get('content') for x in messages])
     return len(encoding.encode(value))
+
+def check_query_type(user_query):
+    system_prompt = """\
+    First, read the <incoming-message> carefully. Try to understand the main issue or question raised by the user.
+    
+    Then, categorise the incoming message to one or more of the following categories:
+    - 'Government Agency': If the user is asking about government agencies, etc
+    - 'Supplier': If the user is asking about suppliers, businesses, etc
+    - 'Procurement Value': If the user is asking about amount awarded, project or procurement value, etc.
+    - 'Tender details': If the user is asking about tender details, date of the tender awarded, etc.
+    - 'Other': If the user's query doesn't fall into any of the above categories and is related to some other aspect.
+    
+    Your response must be a string compatible as a `Python list` object contains the relevant "category(ies)":
+    """
+
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": f"<incoming-message>{user_query}</incoming-message>"}
+    ]
+    return get_completion(user_query)
 
 # function: check for malicious intent
 def check_for_malicious_intent(user_message):
