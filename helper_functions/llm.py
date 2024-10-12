@@ -158,5 +158,31 @@ def check_for_malicious_intent(user_message):
         {'role': 'user', 'content': f"<incoming-massage> {user_message} </incoming-massage>"}
     ]
 
-    response = get_completion(messages, max_tokens = 1)
+    response = get_completion_by_messages(messages, max_tokens = 1)  # NEED to AMEND this
     return response  # returns "Y" if intent is malicious, and "N" if otherwise
+
+
+def process_user_message(user_input):
+    delimiter = "```"
+
+    # Step 0: Safeguard the Sytem from Malicious Prompt
+    if check_for_malicious_intent(user_input) == 'Y':
+        return "Sorry, we cannot process this request. Please rephrase your query or try a different one."
+
+    # Step 1: Conditional Response for Redirecting Queries
+    query_type_identified = check_query_types(user_input)
+
+    if 'Other' in query_type_identified:
+        # divert_to_customer_service()
+
+    # Step 2 (Part A): Identify the Relevant Courses
+    # category_n_course_name = identify_category_and_courses(user_input)
+    # print(f"category_n_course_name : {category_n_course_name}")
+
+    ## Step 2 (Part B): Retrieve Course Details
+    # course_details = get_course_details(category_n_course_name)
+
+    # Process 5: Generate Response based on Course Details
+    # final_reply, full_response = generate_response_based_on_course_details(user_input, course_details)
+    # print(f"Full Response from LLM: {full_response}")
+    return delimiter
