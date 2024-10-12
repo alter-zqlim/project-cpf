@@ -14,3 +14,4 @@ st.write("Guide to Singapore Procurement - https://www.gebiz.gov.sg/singapore-go
 st.write("-- Government Procurement Guide for Suppliers")
 st.write("-- List of Debarment or Disqualification Grounds")
 st.write("-- Registration Guidelines for Government Supplier Registration")
+st.write("Frequently Asked Questions - https://www.gebiz.gov.sg/faq.html (linked on 12 October 2024)")
