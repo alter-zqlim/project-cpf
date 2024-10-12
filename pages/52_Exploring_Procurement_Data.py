@@ -27,6 +27,7 @@ def get_GeBIZ_data():
 unsorted_df = get_GeBIZ_data()
 df = unsorted_df.sort_values(by = ['agency', 'tender_no', 'supplier_name', 'award_date'])
 df_index = df[~df.index.duplicated(keep = 'first')]
+df_markeddown = df.to_markdown()
 
 # generate a multi-option selector that displays data based on selected agencies  
 agencies = st.multiselect(
@@ -52,5 +53,5 @@ user_input = form.text_area(
 # on detecting Submit, processes and writes response to user input
 if form.form_submit_button("Submit"):
     st.toast(f"User Input Submitted - {user_input}")
-    response = llm.generate_response_based_on_procurement_data(user_input, df.to_markdown())
+    response = llm.generate_response_based_on_procurement_data(user_input, df_markeddown)
     st.write(response[1])
