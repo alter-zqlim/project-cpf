@@ -115,7 +115,7 @@ def generate_response_based_on_procurement_data(user_query, procurement_data):
         {"role": "user", "content": f"<incoming-message>{user_query}</incoming-message>"}
     ]
 
-    full_response = get_completion_from_messages(messages, max_tokens = 3500)
+    full_response = get_completion_by_messages(messages, max_tokens = 3500)
     final_response = full_response.split(step_delimiter)[-1]
     return final_response, full_response
 
