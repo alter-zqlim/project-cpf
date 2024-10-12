@@ -76,7 +76,7 @@ def check_query_type(user_query):
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": f"<incoming-message>{user_query}</incoming-message>"}
     ]
-    return get_completion(user_query)
+    return get_completion_by_messages(messages)
 
 # function: check for malicious intent
 def check_for_malicious_intent(user_message):
