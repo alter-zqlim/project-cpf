@@ -173,6 +173,7 @@ def process_user_message(user_input):
     query_type_identified = check_query_types(user_input)
 
     if 'Other' in query_type_identified:
+        make_over = True
         # divert_to_customer_service()
 
     # Step 2 (Part A): Identify the Relevant Courses
