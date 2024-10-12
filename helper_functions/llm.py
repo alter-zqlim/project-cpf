@@ -95,5 +95,5 @@ def check_for_malicious_intent(user_message):
         {'role': 'user', 'content': f"<incoming-massage> {user_message} </incoming-massage>"}
     ]
 
-    response = get_completion_from_messages(messages, max_tokens=1)
+    response = get_completion_from_messages(messages, max_tokens = 1)
     return response  # returns "Y" if intent is malicious, and "N" if otherwise
