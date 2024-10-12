@@ -52,5 +52,5 @@ user_input = form.text_area(
 # on detecting Submit, processes and writes response to user input
 if form.form_submit_button("Submit"):
     st.toast(f"User Input Submitted - {user_input}")
-    response = llm.get_completion(user_input)
+    response = llm.check_query_type(user_input)
     st.write(response)
