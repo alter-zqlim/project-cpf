@@ -3,11 +3,13 @@ import pandas as pd
 from helper_functions import utility
 from helper_functions import llm
 
+# project page <title>
 st.set_page_config(
     page_title = "Exploring Procurement Data",
     page_icon=":material/shopping_cart:"
 )
 
+# page description
 st.title("Exploring Procurement Data")
 st.write(
     "Users can explore procurement data from GeBiz, based on various procuring agencies, from FY2019 to FY2023."
