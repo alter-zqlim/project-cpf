@@ -44,7 +44,7 @@ pandas_agent = create_pandas_dataframe_agent(
     allow_dangerous_code = True
 )
 
-pandas_agent.invoke("how many rows are there?")
+st.write(pandas_agent.invoke("how many rows are there?"))
 
 # generate a multi-option selector that displays data based on selected agencies  
 agencies = st.multiselect(
