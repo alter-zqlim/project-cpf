@@ -41,8 +41,10 @@ pandas_agent = create_pandas_dataframe_agent(
     unsorted_df,
     verbose = True,
     agent_type = AgentType.OPENAI_FUNCTIONS,
+    allow_dangerous_code = True
 )
 
+pandas_agent.invoke("how many rows are there?")
 
 # generate a multi-option selector that displays data based on selected agencies  
 agencies = st.multiselect(
