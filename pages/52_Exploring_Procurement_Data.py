@@ -48,7 +48,7 @@ pandas_agent = create_pandas_dataframe_agent(
 agencies = st.multiselect(
     "Select agencies",
     list(df_index.index),
-    ["Competition and Consumer Commission of Singapore (CCCS)"]
+    ["Housing and Development Board"]
 )
 if not agencies:
     st.error("Please select at least one agency.")
