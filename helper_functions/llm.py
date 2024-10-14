@@ -126,7 +126,7 @@ def check_for_malicious_intent(user_message):
 def generate_response_based_on_procurement_data(user_query, procurement_data):
     step_delimiter = "####"
 
-    if check_for_malicious_intent(user_input) == 'Y':
+    if check_for_malicious_intent(user_query) == 'Y':
         return "Sorry, we cannot process this request. Please rephrase your query or try a different one."
     
     system_message = f"""
