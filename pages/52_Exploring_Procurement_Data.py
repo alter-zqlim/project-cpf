@@ -38,7 +38,7 @@ df_markeddown = df.to_markdown()
 
 pandas_agent = create_pandas_dataframe_agent(
     ChatOpenAI(temperature = 0, model = "gpt-4o-mini"),
-    pd.read_csv("./data/GovernmentProcurementviaGeBIZ.csv"),
+    unsorted_df,
     verbose = True,
     agent_type = AgentType.OPENAI_FUNCTIONS,
     allow_dangerous_code = True
