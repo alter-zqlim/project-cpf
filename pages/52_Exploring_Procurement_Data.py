@@ -6,6 +6,7 @@ from helper_functions import llm
 from langchain.agents.agent_types import AgentType
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain_openai import ChatOpenAI
+from langchain_openai import OpenAI
 
 # project page <title>
 st.set_page_config(
@@ -34,6 +35,14 @@ unsorted_df = get_GeBIZ_data()
 df = unsorted_df.sort_values(by = ['agency', 'tender_no', 'supplier_name', 'award_date'])
 df_index = df[~df.index.duplicated(keep = 'first')]
 df_markeddown = df.to_markdown()
+
+pandas_agent = create_pandas_dataframe_agent(
+    ChatOpenAI(temperature = 0, model = "gpt-4o-mini"),
+    unsorted_df,
+    verbose = True,
+    agent_type = AgentType.OPENAI_FUNCTIONS,
+)
+
 
 # generate a multi-option selector that displays data based on selected agencies  
 agencies = st.multiselect(
