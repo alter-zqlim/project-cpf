@@ -44,8 +44,6 @@ pandas_agent = create_pandas_dataframe_agent(
     allow_dangerous_code = True
 )
 
-st.write(pandas_agent.invoke("how many rows are there?"))
-
 # generate a multi-option selector that displays data based on selected agencies  
 agencies = st.multiselect(
     "Select agencies",
@@ -60,7 +58,7 @@ else:
 
 # generate a form for user input
 form = st.form(key = "form")
-form.subheader("What would you like to know about the above GeBiz procurement data from FY2019 to FY2023?")
+form.subheader("What would you like to know about the GeBiz procurement data from FY2019 to FY2023?")
 
 user_input = form.text_area(
     "Please enter your query below and press Submit", 
@@ -69,6 +67,7 @@ user_input = form.text_area(
 
 # on detecting Submit, processes and writes response to user input
 if form.form_submit_button("Submit"):
-    st.toast(f"User Input Submitted - {user_input}")
-    response = llm.generate_response_based_on_procurement_data(user_input, df)  # unable to use to_markdown() because of token limit
+    st.toast(f"User Input: {user_input}")
+    response = pandas_agent.invoke(user_input)
+    # response = llm.generate_response_based_on_procurement_data(user_input, df)  # unable to use to_markdown() because of token limit
     st.write(response[1])
