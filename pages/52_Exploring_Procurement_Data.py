@@ -28,7 +28,7 @@ if not utility.check_password():
 @st.cache_data
 def get_GeBIZ_data():
     unsorted_df = pd.read_csv("./data/GovernmentProcurementviaGeBIZ.csv")
-    return unsorted_df.set_index("agency")
+    return unsorted_df.set_index("agency", drop = False)
 
 # read GeBiz data file, set index to "agency", sort by specified columns, construct index with unique values
 unsorted_df = get_GeBIZ_data()
