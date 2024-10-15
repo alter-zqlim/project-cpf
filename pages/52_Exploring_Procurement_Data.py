@@ -38,20 +38,8 @@ df = unsorted_df.sort_values(by = ['tender_no', 'supplier_name', 'award_date'])
 df_index = df[~df.index.duplicated(keep = 'first')]
 df_markeddown = df.to_markdown()
 
-# all your (Open AI) password are belong to us
-KEY_OPENAI = st.secrets["KEY_OPENAI_API"]
-client = OpenAI(api_key = KEY_OPENAI)
-
-pandas_agent = create_pandas_dataframe_agent(
-    ChatOpenAI(temperature = 0, api_key = st.secrets["KEY_OPENAI_API"], model = "gpt-4o-mini"),
-    unsorted_df,
-    verbose = True,
-    agent_type = AgentType.OPENAI_FUNCTIONS,
-    allow_dangerous_code = True
-)
-
-# pandas_agent = llm.init_pandas_dataframe_agent(unsorted_df)
-# csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
+pandas_agent = llm.init_pandas_dataframe_agent(unsorted_df)
+csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
 
 # generate a multi-option selector that displays data based on selected agencies  
 agencies = st.multiselect(
