@@ -30,6 +30,6 @@ def write_vector_store(splitted_documents):
     # Load the document, split it into chunks, embed each chunk and load it into the vector store.
     return Chroma.from_documents(
         splitted_documents,
-        OpenAIEmbeddings(model = 'text-embedding-3-small', openai_api_key = "st.secrets["KEY_OPENAI_API"]"),
+        OpenAIEmbeddings(model = 'text-embedding-3-small', openai_api_key = st.secrets["KEY_OPENAI_API"]),
         persist_directory = "./chroma_db"
     )
