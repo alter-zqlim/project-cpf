@@ -46,9 +46,7 @@ def write_vector_store(splitted_documents):
     )
 
 def get_procurement_answer(user_query, vector_base):
-    template = """You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
-    Context: {context} Question: {question} Answer:
-    """
+    template = "{context} {question}"
     retrieval_qa_chat_prompt = PromptTemplate.from_template(template)
     large_lang_model = ChatOpenAI(model = "gpt-3.5-turbo", openai_api_key = st.secrets["KEY_OPENAI_API"])
     
