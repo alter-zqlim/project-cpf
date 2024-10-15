@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from helper_functions import utility
 from helper_functions import llm
+from helper_functions import rag
 
 # project page <title>
 st.set_page_config(
@@ -18,3 +19,6 @@ st.write(
 # password checkpoint
 if not utility.check_password():  
     st.stop()
+
+debarment_guide = "./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf"
+data_reference = rag.loader(debarment_guide)
