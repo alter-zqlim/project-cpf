@@ -38,6 +38,10 @@ df = unsorted_df.sort_values(by = ['tender_no', 'supplier_name', 'award_date'])
 df_index = df[~df.index.duplicated(keep = 'first')]
 df_markeddown = df.to_markdown()
 
+# all your (Open AI) password are belong to us
+KEY_OPENAI = st.secrets["KEY_OPENAI_API"]
+client = OpenAI(api_key = KEY_OPENAI)
+
 pandas_agent = create_pandas_dataframe_agent(
     ChatOpenAI(temperature = 0, model = "gpt-4o-mini"),
     unsorted_df,
@@ -78,7 +82,7 @@ user_input = form.text_area(
 # on detecting Submit, processes and writes response to user input
 if form.form_submit_button("Submit"):
     st.toast(f"User Input: {user_input}")
-    response = llm.csv_agent(path = "./data/GovernmentProcurementviaGeBIZ.csv").invoke(user_input)
+    response = csv_agent.invoke(user_input)
     # response = pandas_agent.invoke(user_input)
     # response = llm.generate_response_based_on_procurement_data(user_input, df)  # unable to use to_markdown() because of token limit
     st.write(response["output"])
