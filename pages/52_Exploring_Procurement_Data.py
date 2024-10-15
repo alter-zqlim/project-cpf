@@ -10,10 +10,6 @@ from langchain_openai import ChatOpenAI
 from langchain_experimental.agents import create_csv_agent
 from langchain.agents.agent_types import AgentType
 
-# all your (Open AI) password are belong to us
-KEY_OPENAI = st.secrets["KEY_OPENAI_API"]
-client = OpenAI(api_key = KEY_OPENAI)
-
 # project page <title>
 st.set_page_config(
     page_title = "Exploring Procurement Data",
