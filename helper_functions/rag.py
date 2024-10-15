@@ -9,6 +9,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
 from langchain_community.vectorstores import Chroma
 
+from openai import OpenAI
+from langchain_openai import OpenAI
 from langchain_openai import OpenAIEmbeddings
 
 # all your (Open AI) password are belong to us
