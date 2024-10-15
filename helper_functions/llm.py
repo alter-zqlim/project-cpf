@@ -179,7 +179,7 @@ def generate_response_based_on_procurement_data(user_query, procurement_data):
 # function: create agents
 def init_pandas_dataframe_agent(dataframe):
     pandas_agent = create_pandas_dataframe_agent(
-        ChatOpenAI(temperature = 0, model = "gpt-4o-mini"),
+        ChatOpenAI(temperature = 0, api_key = st.secrets["KEY_OPENAI_API"], model = "gpt-4o-mini"),
         dataframe,
         verbose = True,
         agent_type = AgentType.OPENAI_FUNCTIONS,
@@ -189,7 +189,7 @@ def init_pandas_dataframe_agent(dataframe):
     
 def init_csv_agent(filepath):
     csv_agent = create_csv_agent(
-        ChatOpenAI(temperature = 0, model = "gpt-4o-mini"), 
+        ChatOpenAI(temperature = 0, api_key = st.secrets["KEY_OPENAI_API"], model = "gpt-4o-mini"), 
         filepath,
         verbose = True,
         agent_type = AgentType.OPENAI_FUNCTIONS,
