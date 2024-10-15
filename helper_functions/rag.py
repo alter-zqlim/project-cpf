@@ -13,6 +13,10 @@ from openai import OpenAI
 from langchain_openai import OpenAI
 from langchain_openai import OpenAIEmbeddings
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 def loader(filepath):
     loader = PyPDFLoader(filepath)
     return loader.load()
