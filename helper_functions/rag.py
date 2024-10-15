@@ -44,5 +44,8 @@ def write_vector_store(splitted_documents):
         persist_directory = "./chroma_db"
     )
 
+def get_procurement_answer(user_query):
+    return user_query
+
 template = "Use the following pieces of context to answer the question at the end. If you don't know the answer, do not try to make up an answer. Just say that you don't know. Use three sentences maximum. Keep the answer as concise as possible. {context} Question: {question} Helpful Answer:"
 prompt = PromptTemplate.from_template(template)
