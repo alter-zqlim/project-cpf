@@ -47,8 +47,8 @@ pandas_agent = create_pandas_dataframe_agent(
 )
 
 csv_agent = create_csv_agent(
-    ChatOpenAI(temperature = 0, model="gpt-4o-mini"), 
-    unsorted_df,
+    ChatOpenAI(temperature = 0, model = "gpt-4o-mini"), 
+    "./data/GovernmentProcurementviaGeBIZ.csv",
     verbose = True,
     agent_type = AgentType.OPENAI_FUNCTIONS,
     allow_dangerous_code = True
