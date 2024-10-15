@@ -9,6 +9,12 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
 from langchain_community.vectorstores import Chroma
 
+from langchain_openai import OpenAIEmbeddings
+
+# all your (Open AI) password are belong to us
+KEY_OPENAI = st.secrets["KEY_OPENAI_API"]
+client = OpenAI(api_key = KEY_OPENAI)
+
 def loader(filepath):
     loader = PyPDFLoader(filepath)
     return loader.load()
@@ -26,6 +32,6 @@ def write_vector_store(splitted_documents):
     # Load the document, split it into chunks, embed each chunk and load it into the vector store.
     return Chroma.from_documents(
         splitted_documents,
-        llm.embeddings_model,
+        OpenAIEmbeddings(model = 'text-embedding-3-small'),
         persist_directory = "./chroma_db"
     )
