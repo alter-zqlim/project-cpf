@@ -3,10 +3,12 @@ import pandas as pd
 from helper_functions import utility
 from helper_functions import llm
 
-from langchain.agents.agent_types import AgentType
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
-from langchain_openai import ChatOpenAI
 from langchain_openai import OpenAI
+from langchain_openai import ChatOpenAI
+
+from langchain.agents import create_csv_agent
+from langchain.agents.agent_types import AgentType
 
 # project page <title>
 st.set_page_config(
@@ -38,6 +40,14 @@ df_markeddown = df.to_markdown()
 
 pandas_agent = create_pandas_dataframe_agent(
     ChatOpenAI(temperature = 0, model = "gpt-4o-mini"),
+    unsorted_df,
+    verbose = True,
+    agent_type = AgentType.OPENAI_FUNCTIONS,
+    allow_dangerous_code = True
+)
+
+csv_agent = create_csv_agent(
+    ChatOpenAI(temperature = 0, model="gpt-4o-mini"), 
     unsorted_df,
     verbose = True,
     agent_type = AgentType.OPENAI_FUNCTIONS,
