@@ -42,6 +42,14 @@ df_markeddown = df.to_markdown()
 KEY_OPENAI = st.secrets["KEY_OPENAI_API"]
 client = OpenAI(api_key = KEY_OPENAI)
 
+pandas_agent = create_pandas_dataframe_agent(
+    ChatOpenAI(temperature = 0, model = "gpt-4o-mini"),
+    unsorted_df,
+    verbose = True,
+    agent_type = AgentType.OPENAI_FUNCTIONS,
+    allow_dangerous_code = True
+)
+
 # pandas_agent = llm.init_pandas_dataframe_agent(unsorted_df)
 # csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
 
@@ -69,7 +77,7 @@ user_input = form.text_area(
 # on detecting Submit, processes and writes response to user input
 if form.form_submit_button("Submit"):
     st.toast(f"User Input: {user_input}")
-    response = csv_agent.invoke(user_input)
-    # response = pandas_agent.invoke(user_input)
+    # response = csv_agent.invoke(user_input)
+    response = pandas_agent.invoke(user_input)
     # response = llm.generate_response_based_on_procurement_data(user_input, df)  # unable to use to_markdown() because of token limit
     st.write(response["output"])
