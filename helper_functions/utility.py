@@ -27,7 +27,7 @@ def check_password():
         st.error("Password incorrect")  
     return False
 
-# function: read csv
+# function: read csv, set index
 @st.cache_data
 def get_GeBIZ_data(filepath, index):
     df = pd.read_csv(filepath)
