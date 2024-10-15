@@ -43,7 +43,7 @@ KEY_OPENAI = st.secrets["KEY_OPENAI_API"]
 client = OpenAI(api_key = KEY_OPENAI)
 
 pandas_agent = create_pandas_dataframe_agent(
-    ChatOpenAI(temperature = 0, model = "gpt-4o-mini"),
+    ChatOpenAI(temperature = 0, api_key = st.secrets["KEY_OPENAI_API"], model = "gpt-4o-mini"),
     unsorted_df,
     verbose = True,
     agent_type = AgentType.OPENAI_FUNCTIONS,
