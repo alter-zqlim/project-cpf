@@ -22,3 +22,5 @@ if not utility.check_password():
 
 debarment_guide = "./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf"
 data_reference = rag.loader(debarment_guide)
+st.write(data_reference[0])
+st.write(data_reference[0].metadata)
