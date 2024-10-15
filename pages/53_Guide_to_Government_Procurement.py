@@ -23,5 +23,5 @@ if not utility.check_password():
 debarment_guide = "./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf"
 data_reference = rag.loader(debarment_guide)  # outputs 'pages'
 splitted_documents = rag.text_splitter(data_reference)
-db = write_vector_store(splitted_documents)
+db = rag.write_vector_store(splitted_documents)
 st.write(db._collection.count())
