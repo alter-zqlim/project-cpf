@@ -15,6 +15,7 @@ from langchain_openai import OpenAIEmbeddings
 
 __import__('pysqlite3')
 import sys
+import pysqlite3
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 def loader(filepath):
