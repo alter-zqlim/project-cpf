@@ -13,10 +13,6 @@ from openai import OpenAI
 from langchain_openai import OpenAI
 from langchain_openai import OpenAIEmbeddings
 
-# all your (Open AI) password are belong to us
-KEY_OPENAI = st.secrets["KEY_OPENAI_API"]
-client = OpenAI(api_key = KEY_OPENAI)
-
 def loader(filepath):
     loader = PyPDFLoader(filepath)
     return loader.load()
@@ -34,6 +30,6 @@ def write_vector_store(splitted_documents):
     # Load the document, split it into chunks, embed each chunk and load it into the vector store.
     return Chroma.from_documents(
         splitted_documents,
-        OpenAIEmbeddings(model = 'text-embedding-3-small'),
+        OpenAIEmbeddings(model = 'text-embedding-3-small', openai_api_key = "st.secrets["KEY_OPENAI_API"]"),
         persist_directory = "./chroma_db"
     )
