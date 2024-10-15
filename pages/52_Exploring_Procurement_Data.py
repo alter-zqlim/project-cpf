@@ -42,8 +42,8 @@ df_markeddown = df.to_markdown()
 KEY_OPENAI = st.secrets["KEY_OPENAI_API"]
 client = OpenAI(api_key = KEY_OPENAI)
 
-pandas_agent = llm.init_pandas_dataframe_agent(unsorted_df)
-csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
+# pandas_agent = llm.init_pandas_dataframe_agent(unsorted_df)
+# csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
 
 # generate a multi-option selector that displays data based on selected agencies  
 agencies = st.multiselect(
