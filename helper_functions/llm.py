@@ -176,22 +176,6 @@ def generate_response_based_on_procurement_data(user_query, procurement_data):
     final_response = full_response.split(step_delimiter)[-1]
     return final_response, full_response
 
-pandas_agent = create_pandas_dataframe_agent(
-    ChatOpenAI(temperature = 0, model = "gpt-4o-mini"),
-    # unsorted_df,
-    verbose = True,
-    agent_type = AgentType.OPENAI_FUNCTIONS,
-    allow_dangerous_code = True
-)
-
-csv_agent = create_csv_agent(
-    ChatOpenAI(temperature = 0, model = "gpt-4o-mini"), 
-    # "./data/GovernmentProcurementviaGeBIZ.csv",
-    verbose = True,
-    agent_type = AgentType.OPENAI_FUNCTIONS,
-    allow_dangerous_code = True
-)
-
 def process_user_message(user_input):
     delimiter = "```"
 
