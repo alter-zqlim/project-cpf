@@ -4,6 +4,13 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import tiktoken
 
+from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
+from langchain_openai import OpenAI
+from langchain_openai import ChatOpenAI
+
+from langchain_experimental.agents import create_csv_agent
+from langchain.agents.agent_types import AgentType
+
 # all your (Open AI) password are belong to us
 KEY_OPENAI = st.secrets["KEY_OPENAI_API"]
 client = OpenAI(api_key = KEY_OPENAI)
@@ -169,6 +176,21 @@ def generate_response_based_on_procurement_data(user_query, procurement_data):
     final_response = full_response.split(step_delimiter)[-1]
     return final_response, full_response
 
+pandas_agent = create_pandas_dataframe_agent(
+    ChatOpenAI(temperature = 0, model = "gpt-4o-mini"),
+    # unsorted_df,
+    verbose = True,
+    agent_type = AgentType.OPENAI_FUNCTIONS,
+    allow_dangerous_code = True
+)
+
+csv_agent = create_csv_agent(
+    ChatOpenAI(temperature = 0, model = "gpt-4o-mini"), 
+    # "./data/GovernmentProcurementviaGeBIZ.csv",
+    verbose = True,
+    agent_type = AgentType.OPENAI_FUNCTIONS,
+    allow_dangerous_code = True
+)
 
 def process_user_message(user_input):
     delimiter = "```"
