@@ -1,8 +1,9 @@
 import streamlit as st  
+import pandas as pd
 import random  
-import hmac  
+import hmac
 
-# check password input against Streamlit Secrets 
+# function: check password input against Streamlit Secrets 
 def check_password():  
     # returns True if user entered correct password  
     def password_entered():  
@@ -25,3 +26,9 @@ def check_password():
     if "password_correct" in st.session_state:  
         st.error("Password incorrect")  
     return False
+
+# function: read csv
+@st.cache_data
+def get_GeBIZ_data(filepath, index):
+    df = pd.read_csv(filepath)
+    return df.set_index(index, drop = False)
