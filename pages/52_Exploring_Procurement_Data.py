@@ -26,16 +26,14 @@ st.write(
 if not utility.check_password():  
     st.stop()
 
-# function: read GeBiz data file, set index to "agency"
-@st.cache_data
-def get_GeBIZ_data():
-    unsorted_df = pd.read_csv("./data/GovernmentProcurementviaGeBIZ.csv")
-    return unsorted_df.set_index("agency", drop = False)
+st.cache_data.clear()
+data_input_filepath = "./data/GovernmentProcurementviaGeBIZ.csv"
+data_input_index = "agency"
 
 # read GeBiz data file, set index to "agency", sort by specified columns, construct index with unique values
-unsorted_df = get_GeBIZ_data()
-df = unsorted_df.sort_values(by = ['tender_no', 'supplier_name', 'award_date'])
-df_index = df[~df.index.duplicated(keep = 'first')]
+unsorted_df = utility.get_GeBIZ_data(data_input_filepath, data_input_index)
+df = unsorted_df.sort_values(by = ["tender_no", "supplier_name", "award_date"])
+df_index = df[~df.index.duplicated(keep = "first")]
 df_markeddown = df.to_markdown()
 
 pandas_agent = llm.init_pandas_dataframe_agent(unsorted_df)
