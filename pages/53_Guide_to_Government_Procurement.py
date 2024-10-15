@@ -21,6 +21,7 @@ if not utility.check_password():
     st.stop()
 
 debarment_guide = "./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf"
-data_reference = rag.loader(debarment_guide)
-st.write(data_reference[0])
+data_reference = rag.loader(debarment_guide)  # outputs 'pages'
+splitted_documents = rag.text_splitter(data_reference)
+st.write(len(splitted_documents))
 st.write(data_reference[0].metadata)
