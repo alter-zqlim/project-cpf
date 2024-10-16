@@ -14,6 +14,7 @@ from langchain_openai import OpenAI
 from langchain_openai import OpenAIEmbeddings
 
 from langchain_core.prompts import PromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from langchain import hub
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
