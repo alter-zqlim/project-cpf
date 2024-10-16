@@ -62,6 +62,6 @@ def get_procurement_answer(user_query, vector_base):
     combine_docs_chain = create_stuff_documents_chain(large_lang_model, retrieval_qa_chat_prompt)
     rag_chain = create_retrieval_chain(vector_base, combine_docs_chain)
     
-    return rag_chain.invoke({"input": "What are the conditions for debarment?"})
+    return rag_chain.invoke({"input": user_query})
 
 
