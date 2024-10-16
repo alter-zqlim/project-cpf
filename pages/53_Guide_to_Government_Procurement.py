@@ -28,4 +28,18 @@ splitted_documents = rag.text_splitter(data_reference)  # chunks loaded doc (PDF
 db = rag.write_vector_store(splitted_documents)  # returns vector store of chunked doc
 st.write(db._collection.count())
 
-st.write(rag.get_procurement_answer("Who hosted the first Youth Olympics?", db.as_retriever()))
+# generate a form for user input
+form = st.form(key = "form")
+form.subheader("What would you like to know about authority and rationale for debarment?")
+
+user_input = form.text_area(
+    "Please enter your query below and press Submit", 
+    height = 160
+)
+
+# on detecting Submit, processes and writes response to user input
+if form.form_submit_button("Submit"):
+    st.toast(f"User Input: {user_input}")
+    response = rag.get_procurement_answer(user_input, db.as_retriever())
+    st.write(response["answer"])
+    
