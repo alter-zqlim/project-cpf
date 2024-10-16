@@ -58,7 +58,7 @@ def get_procurement_answer(user_query, vector_base):
     # prompt = ChatPromptTemplate.from_template("Summarize this content: {context}")
     
     # retrieval_qa_chat_prompt = PromptTemplate.from_template(template)
-    large_lang_model = ChatOpenAI(model = "gpt-3.5-turbo", openai_api_key = st.secrets["KEY_OPENAI_API"])
+    large_lang_model = ChatOpenAI(model = "gpt-4o-mini", openai_api_key = st.secrets["KEY_OPENAI_API"])
     combine_docs_chain = create_stuff_documents_chain(large_lang_model, retrieval_qa_chat_prompt)
     rag_chain = create_retrieval_chain(vector_base, combine_docs_chain)
     
