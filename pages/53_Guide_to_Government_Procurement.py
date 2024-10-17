@@ -23,7 +23,7 @@ if not utility.check_password():
 # specify source
 debarment_guide = "./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf"
 
-data_reference = rag.loader(debarment_guide)  # loads PDF
+data_reference = utility.loader(debarment_guide)  # loads PDF
 splitted_documents = rag.text_splitter(data_reference)  # chunks loaded doc (PDF)
 db = rag.write_vector_store(splitted_documents)  # returns vector store of chunked doc
 st.write(db._collection.count())
