@@ -3,6 +3,8 @@ import pandas as pd
 import random  
 import hmac
 
+from langchain_community.document_loaders import PyPDFLoader
+
 # function: check password input against Streamlit Secrets 
 def check_password():  
     # returns True if user entered correct password  
