@@ -25,10 +25,6 @@ import sys
 import pysqlite3
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
-def loader(filepath):
-    loader = PyPDFLoader(filepath)
-    return loader.load()
-
 def text_splitter(pages):
     text_chunking = RecursiveCharacterTextSplitter(
         separators = ["\n\n", "\n", " ", ""],
