@@ -20,13 +20,14 @@ st.write(
 if not utility.check_password():  
     st.stop()
 
-# specify source
+# specify sources
 debarment_guide = "./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf"
+guidelines_supp_reg = "./data/Appln_Guidelines_for_Gov_Supp_Reg.pdf"
 
 data_reference = utility.loader(debarment_guide)  # loads PDF
 splitted_documents = rag.text_splitter(data_reference)  # chunks loaded doc (PDF)
 db = rag.write_vector_store(splitted_documents)  # returns vector store of chunked doc
-st.write(db._collection.count())
+# st.write(db._collection.count())
 
 # generate a form for user input
 form = st.form(key = "form")
