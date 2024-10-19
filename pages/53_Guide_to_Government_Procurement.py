@@ -21,10 +21,15 @@ if not utility.check_password():
     st.stop()
 
 # specify sources
+list_pdf = ["./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf", "./data/Appln_Guidelines_for_Gov_Supp_Reg.pdf"]
 debarment_guide = "./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf"
 guidelines_supp_reg = "./data/Appln_Guidelines_for_Gov_Supp_Reg.pdf"
 
-data_reference = utility.loader(debarment_guide)  # loads PDF
+data_reference = []
+for item in list_pdf:
+    pdf_pages = utility.loader(item)  # loads PDF
+    data_reference.extend(pdf_pages)
+
 splitted_documents = rag.text_splitter(data_reference)  # chunks loaded doc (PDF)
 db = rag.write_vector_store(splitted_documents)  # returns vector store of chunked doc
 # st.write(db._collection.count())
