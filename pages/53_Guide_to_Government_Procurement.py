@@ -14,7 +14,7 @@ st.set_page_config(
 st.title(":blue[Guide to Government Procurement]")
 st.markdown(
     """This app covers topics related to:  
-    (i) General Information on Government Procurment for Suppliers;  
+    (i) General Information on Government Procurement for Suppliers;  
     (ii) Government Supplier Registration (GSR); as well as  
     (iii) Grounds for Debarment or Disqualification of Suppliers."""
 )
@@ -42,7 +42,7 @@ db = rag.write_vector_store(splitted_documents)  # returns vector store of chunk
 
 # generate a form for user input
 form = st.form(key = "form")
-form.subheader("What would you like to know about authority and rationale for debarment?")
+form.subheader("What would you like to know about government procurement?")
 
 user_input = form.text_area(
     "Please enter your query below and press Submit", 
