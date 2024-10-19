@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 # page description
-st.title("Guide to Government Procurement")
+st.title(":blue[Guide to Government Procurement]")
 st.markdown(
     """This app covers topics related to:  
     (i) General Information on Government Procurment for Suppliers;  
