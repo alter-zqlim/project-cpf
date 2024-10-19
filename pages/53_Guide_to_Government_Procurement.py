@@ -12,7 +12,12 @@ st.set_page_config(
 
 # page description
 st.title("Guide to Government Procurement")
-st.write("This app covers topics related to: (i) General Information on Government Procurment for Suppliers; (ii) Government Supplier Registration (GSR); as well as (iii) Grounds for Debarment or Disqualification of Suppliers.")
+st.markdown(
+    """This app covers topics related to:  
+    (i) General Information on Government Procurment for Suppliers;  
+    (ii) Government Supplier Registration (GSR); as well as  
+    (iii) Grounds for Debarment or Disqualification of Suppliers."""
+)
 st.divider()
 st.write(
     "Are you a budding business looking to transact with the government? Do you have further questions about government procurement? Ask away!"
