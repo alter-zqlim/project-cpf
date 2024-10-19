@@ -12,8 +12,10 @@ st.set_page_config(
 
 # page description
 st.title("Guide to Government Procurement")
+st.write("This app covers topics related to: (i) General Information on Government Procurment for Suppliers; (ii) Government Supplier Registration (GSR); as well as (iii) Grounds for Debarment or Disqualification of Suppliers.")
+st.divider()
 st.write(
-    "Are you a budding business looking to transact with the government? Do you have questions about government procurement? Ask away!"
+    "Are you a budding business looking to transact with the government? Do you have further questions about government procurement? Ask away!"
 )
 
 # password checkpoint
@@ -21,17 +23,16 @@ if not utility.check_password():
     st.stop()
 
 # specify sources
-list_pdf = ["./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf", "./data/Appln_Guidelines_for_Gov_Supp_Reg.pdf"]
-debarment_guide = "./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf"
-guidelines_supp_reg = "./data/Appln_Guidelines_for_Gov_Supp_Reg.pdf"
+list_pdf = ["./data/Supplier_Guide_Detailed.pdf", "./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf", "./data/Appln_Guidelines_for_Gov_Supp_Reg.pdf"]
 
-data_reference = []
+
+data_reference = []  # init list to store loaded docs
 for item in list_pdf:
     pdf_pages = utility.loader(item)  # loads PDF
     data_reference.extend(pdf_pages)
 
-splitted_documents = rag.text_splitter(data_reference)  # chunks loaded doc (PDF)
-db = rag.write_vector_store(splitted_documents)  # returns vector store of chunked doc
+splitted_documents = rag.text_splitter(data_reference)  # chunks loaded docs (PDF)
+db = rag.write_vector_store(splitted_documents)  # returns vector store of chunked docs
 # st.write(db._collection.count())
 
 # generate a form for user input
