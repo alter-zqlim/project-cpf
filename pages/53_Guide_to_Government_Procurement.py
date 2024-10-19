@@ -20,7 +20,7 @@ st.markdown(
 )
 st.divider()
 st.write(
-    "Are you a budding business looking to transact with the government? Do you have further questions about government procurement? Ask away!"
+    "*Are you a budding business looking to transact with the government? Do you have further questions about government procurement? Ask away!*"
 )
 
 # password checkpoint
