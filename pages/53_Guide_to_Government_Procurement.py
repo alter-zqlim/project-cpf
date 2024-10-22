@@ -30,6 +30,13 @@ if not utility.check_password():
 # specify sources
 list_pdf = ["./data/Supplier_Guide_Detailed.pdf", "./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf", "./data/Appln_Guidelines_for_Gov_Supp_Reg.pdf"]
 
+# sample queries
+st.markdown(
+    """:blue[*Here are some sample queries for you to get started*:  
+    :material/adjust: What are some principles of government procurement?  
+    :material/adjust: How do I register as a supplier?  
+    :material/adjust: What if I default in performing the contract?]"""
+)
 
 data_reference = []  # init list to store loaded docs
 for item in list_pdf:
@@ -48,14 +55,6 @@ form.subheader("What would you like to know about government procurement?")
 user_input = form.text_area(
     "Please enter your query below and press Submit", 
     height = 160
-)
-
-# sample queries
-st.markdown(
-    """:blue[*Here are some sample queries for you to get started*:  
-    :material/adjust: What are some principles of government procurement?  
-    :material/adjust: How do I register as a supplier?  
-    :material/adjust: What if I default in performing the contract?]"""
 )
 
 # on detecting Submit, processes and writes response to user input
