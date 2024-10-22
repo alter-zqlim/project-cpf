@@ -43,7 +43,9 @@ def text_semantic_splitter(pages):
         chunk_overlap = 50,
         length_function = llm.count_tokens
     )
-    return text_chunking.split_documents(pages)
+    text_splitter = SemanticChunker(OpenAIEmbeddings(model = "text-embedding-3-small", openai_api_key = st.secrets["KEY_OPENAI_API"]))
+    # return text_chunking.split_documents(pages)
+    return text_splitter.split_documents(pages)
 
 def write_vector_store(splitted_documents):
     # Load the document, split it into chunks, embed each chunk and load it into the vector store.
