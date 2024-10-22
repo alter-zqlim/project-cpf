@@ -37,14 +37,8 @@ def text_splitter(pages):
     return text_chunking.split_documents(pages)
 
 def text_semantic_splitter(pages):
-    text_chunking = RecursiveCharacterTextSplitter(
-        separators = ["\n\n", "\n", " ", ""],
-        chunk_size = 500,
-        chunk_overlap = 50,
-        length_function = llm.count_tokens
-    )
+    # able to adjust parameter of breakpoint_threshold_type = "percentile" OR "standard_deviation" OR "interquartile" OR "gradient"
     text_splitter = SemanticChunker(OpenAIEmbeddings(model = "text-embedding-3-small", openai_api_key = st.secrets["KEY_OPENAI_API"]))
-    # return text_chunking.split_documents(pages)
     return text_splitter.split_documents(pages)
 
 def write_vector_store(splitted_documents):
