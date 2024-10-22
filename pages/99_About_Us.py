@@ -1,7 +1,8 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title = "About Us"
+    page_title = "About Us", 
+    page_icon = ":material/quiz:"
 )
 
 # This is a detailed page that outlines the project scope, objectives, data sources, and features.
