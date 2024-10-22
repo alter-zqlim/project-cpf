@@ -36,4 +36,42 @@ df_markeddown = df.to_markdown()
 
 # display entire dataframe
 # st.dataframe(df, use_container_width = True)
-st.bar_chart(df, x = "agency", y = "awarded_amt")
+st.bar_chart(df, y = "agency", x = "awarded_amt", y_label = "Agency", x_label = "Awarded Procurement Value")
+
+# password checkpoint
+if not utility.check_password():  
+    st.stop()
+
+pandas_agent = llm.init_pandas_dataframe_agent(unsorted_df)
+csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
+
+# generate a multi-option selector that displays data based on selected agencies  
+agencies = st.multiselect(
+    "Select agencies",
+    list(df_index.index),
+    ["Competition and Consumer Commission of Singapore (CCCS)"]
+)
+if not agencies:
+    st.error("Please select at least one agency.")
+else:
+    data = df.loc[agencies]
+    st.write("## Procurement projects", data.sort_index())
+
+# generate a form for user input
+form = st.form(key = "form")
+form.subheader("What would you like to know about the GeBiz procurement data from FY2019 to FY2023?")
+
+user_input = form.text_area(
+    "Please enter your query below and press Submit", 
+    height = 160
+)
+
+# on detecting Submit, processes and writes response to user input
+if form.form_submit_button("Submit"):
+    st.toast(f"User Input: {user_input}")
+    response = csv_agent.invoke(user_input)
+    # response = pandas_agent.invoke(user_input)
+    # response = llm.generate_response_based_on_procurement_data(user_input, df)  # unable to use to_markdown() because of token limit
+    st.write(response["output"])
+
+
