@@ -26,7 +26,9 @@ st.write(
 if not utility.check_password():  
     st.stop()
 
-st.cache_data.clear()
+# st.cache_data.clear()
+
+# specify sources
 data_input_filepath = "./data/GovernmentProcurementviaGeBIZ.csv"
 data_input_index = "agency"
 
@@ -43,7 +45,7 @@ csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
 agencies = st.multiselect(
     "Select agencies",
     list(df_index.index),
-    ["Housing and Development Board"]
+    ["Competition and Consumer Commission of Singapore (CCCS)"]
 )
 if not agencies:
     st.error("Please select at least one agency.")
