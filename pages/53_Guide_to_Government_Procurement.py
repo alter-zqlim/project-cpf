@@ -32,7 +32,7 @@ list_pdf = ["./data/Supplier_Guide_Detailed.pdf", "./data/AUTHORITY_AND_RATIONAL
 
 # sample queries
 st.markdown(
-    """:blue[*Here are some sample queries for you to get started*:  
+    """:blue[*Here are some sample queries (copy and paste to the submission box below) for you to get started*:  
     :material/adjust: What are some principles of government procurement?  
     :material/adjust: How do I register as a supplier?  
     :material/adjust: What if I default in performing the contract?]"""
