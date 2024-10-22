@@ -40,6 +40,13 @@ splitted_documents = rag.text_splitter(data_reference)  # chunks loaded docs (PD
 db = rag.write_vector_store(splitted_documents)  # returns vector store of chunked docs
 # st.write(db._collection.count())
 
+st.markdown(
+    """Here are some sample queries for you to get started:  
+    :material/adjust: What are some principles of government procurement?  
+    :material/adjust: How do I register as a supplier?  
+    :material/adjust: What are some reasons for debarment of suppliers?"""
+)
+
 # generate a form for user input
 form = st.form(key = "form")
 form.subheader("What would you like to know about government procurement?")
