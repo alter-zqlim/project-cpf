@@ -36,4 +36,4 @@ df_markeddown = df.to_markdown()
 
 # display entire dataframe
 # st.dataframe(df, use_container_width = True)
-st.bar_chart(df)
+st.bar_chart(df, x = "agency", y = "awarded_amt")
