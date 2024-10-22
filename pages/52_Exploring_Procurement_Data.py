@@ -22,10 +22,6 @@ st.write(
     "Users can explore procurement data from GeBiz, based on various procuring agencies, from FY2019 to FY2023."
 )
 
-# password checkpoint
-if not utility.check_password():  
-    st.stop()
-
 # st.cache_data.clear()
 
 # specify sources
@@ -35,5 +31,9 @@ data_input_index = "agency"
 # read GeBiz data file, set index to "agency", sort by specified columns, construct index with unique values
 unsorted_df = utility.get_GeBIZ_data(data_input_filepath, data_input_index)
 df = unsorted_df.sort_values(by = ["tender_no", "supplier_name", "award_date"])
+df_index = df[~df.index.duplicated(keep = "first")]
+df_markeddown = df.to_markdown()
 
-st.dataframe(df, use_container_width = True)
+# display entire dataframe
+# st.dataframe(df, use_container_width = True)
+st.bar_chart(df)
