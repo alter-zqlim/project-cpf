@@ -7,7 +7,7 @@ from helper_functions import rag
 # project page <title>
 st.set_page_config(
     page_title = "Guide to Government Procurement",
-    page_icon=":material/shopping_cart:"
+    page_icon = ":material/shopping_cart:"
 )
 
 # page description
