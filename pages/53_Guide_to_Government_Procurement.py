@@ -64,5 +64,6 @@ if form.form_submit_button("Submit"):
     if(response["context"] == []):
         st.write("I do not have the answer to that. Please rephrase your query or try a different one.")
     else:
-        st.write(response)
+        # st.write(response)  # full answer including input, context
+        st.write(response["answer"])  # answer only
     
