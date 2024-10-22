@@ -19,6 +19,6 @@ st.image(
 
 st.image(
     "./assets/flow_02.jpg",
-    caption = "Answers user queries based on pre-loaded set of PDF documents. Post-retrieval process is improved through filtering by score threshold. Query is also checked for relevance to the subject matter loaded."
+    caption = "Answers user queries based on pre-loaded set of 3 PDF documents. Pre-retrieval is improved through semantic chunking. Post-retrieval process is improved through filtering by score threshold. Query is also checked for relevance to the pre-loaded subject matter loaded."
 )
 
