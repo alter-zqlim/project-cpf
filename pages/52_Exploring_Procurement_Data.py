@@ -22,7 +22,7 @@ st.write(
     "Users can explore procurement data from GeBiz, based on various procuring agencies, from FY2019 to FY2023."
 )
 
-# st.cache_data.clear()
+st.cache_data.clear()
 
 # specify sources
 data_input_filepath = "./data/GovernmentProcurementviaGeBIZ.csv"
