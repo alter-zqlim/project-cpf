@@ -51,15 +51,15 @@ user_input = form.text_area(
 
 # sample queries
 st.markdown(
-    """*Here are some sample queries for you to get started*:  
+    """:blue[*Here are some sample queries for you to get started*:  
     :material/adjust: What are some principles of government procurement?  
     :material/adjust: How do I register as a supplier?  
-    :material/adjust: What are some reasons for debarment of suppliers?"""
+    :material/adjust: What are some reasons for debarment of suppliers?]"""
 )
 
 # on detecting Submit, processes and writes response to user input
 if form.form_submit_button("Submit"):
     st.toast(f"User Input: {user_input}")
-    response = rag.get_procurement_answer(user_input, db.as_retriever(search_type = "similarity", search_kwargs = {"k": 6}))
+    response = rag.get_procurement_answer(user_input, db.as_retriever(search_type = "similarity_score_threshold", search_kwargs = {"score_threshold": 0.20}))
     st.write(response["answer"])
     
