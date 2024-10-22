@@ -36,7 +36,10 @@ df_markeddown = df.to_markdown()
 
 # display entire dataframe
 # st.dataframe(df, use_container_width = True)
-st.bar_chart(df, y = "agency", x = "awarded_amt", y_label = "Agency", x_label = "Awarded Procurement Value")
+# st.bar_chart(df, y = "agency", x = "awarded_amt", y_label = "Agency", x_label = "Awarded Procurement Value")
+counts = df[data_input_index].value_counts().reset_index()
+counts.columns = [data_input_index, "count"]
+st.bar_chart(counts)
 
 # password checkpoint
 if not utility.check_password():  
