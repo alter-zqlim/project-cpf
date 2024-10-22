@@ -36,6 +36,15 @@ def text_splitter(pages):
     )
     return text_chunking.split_documents(pages)
 
+def text_semantic_splitter(pages):
+    text_chunking = RecursiveCharacterTextSplitter(
+        separators = ["\n\n", "\n", " ", ""],
+        chunk_size = 500,
+        chunk_overlap = 50,
+        length_function = llm.count_tokens
+    )
+    return text_chunking.split_documents(pages)
+
 def write_vector_store(splitted_documents):
     # Load the document, split it into chunks, embed each chunk and load it into the vector store.
     return Chroma.from_documents(
