@@ -40,7 +40,8 @@ df_markeddown = df.to_markdown()
 counts = df[data_input_index].value_counts().reset_index()
 counts.columns = [data_input_index, "count"]
 counts = counts.sort_values(by = "count", ascending = False)
-st.write(counts)
+st.bar_chart(counts, x = "count", y_label = "Agency", x_label = "Number of Awarded Tenders")
+
 
 # password checkpoint
 if not utility.check_password():  
