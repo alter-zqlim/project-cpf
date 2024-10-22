@@ -22,6 +22,9 @@ from langchain_openai import ChatOpenAI
 
 from langchain_experimental.text_splitter import SemanticChunker
 
+import bs4
+from langchain_community.document_loaders import WebBaseLoader
+
 __import__('pysqlite3')
 import sys
 import pysqlite3
