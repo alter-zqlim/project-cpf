@@ -3,7 +3,9 @@ import pandas as pd
 import random  
 import hmac
 
+import bs4
 from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import WebBaseLoader
 
 # function: check password input against Streamlit Secrets 
 def check_password():  
@@ -39,4 +41,11 @@ def get_GeBIZ_data(filepath, index):
 @st.cache_data
 def loader_pdf(filepath):
     loader = PyPDFLoader(filepath)
+    return loader.load()
+
+
+# function: read, load pdf
+@st.cache_data
+def loader_url(filepath):
+    loader = WebBaseLoader(filepath)
     return loader.load()
