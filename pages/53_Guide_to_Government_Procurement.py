@@ -61,5 +61,6 @@ st.markdown(
 if form.form_submit_button("Submit"):
     st.toast(f"User Input: {user_input}")
     response = rag.get_procurement_answer(user_input, db.as_retriever(search_type = "similarity_score_threshold", search_kwargs = {"score_threshold": 0.05}))
-    st.write(response["answer"])
+    st.write(response)
+    # st.write(response["answer"])
     
