@@ -23,13 +23,22 @@ st.write(
     "*Are you a budding business looking to transact with the government? Do you have further questions about government procurement? Ask away!*"
 )
 
-# password checkpoint
-if not utility.check_password():  
-    st.stop()
-
 # specify sources
 list_pdf = ["./data/Supplier_Guide_Detailed.pdf", "./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf", "./data/Appln_Guidelines_for_Gov_Supp_Reg.pdf"]
 list_url = ["https://www.mof.gov.sg/policies/government-procurement"]
+
+data_reference = []  # init list to store loaded docs
+for item in list_pdf:
+    pdf_pages = utility.loader_pdf(item)  # loads PDF
+    data_reference.extend(pdf_pages)
+
+for item in list_url:
+    url_pages = utility.loader_url(item)  # loads URL
+    data_reference.extend(url_pages)
+
+# password checkpoint
+if not utility.check_password():  
+    st.stop()
 
 # sample queries
 st.markdown(
@@ -38,14 +47,6 @@ st.markdown(
     :material/adjust: How do I register as a supplier?  
     :material/adjust: What if I default in performing the contract?]"""
 )
-
-data_reference = []  # init list to store loaded docs
-for item in list_pdf:
-    pdf_pages = utility.loader_pdf(item)  # loads PDF
-    data_reference.extend(pdf_pages)
-
-for item in list_url:
-    x = 2
 
 # splitted_documents = rag.text_splitter(data_reference)  # chunks loaded docs (PDF)
 splitted_documents = rag.text_semantic_splitter(data_reference)  # semantic chunking of loaded docs (PDF)
