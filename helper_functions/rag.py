@@ -43,7 +43,7 @@ def write_vector_store(splitted_documents):
     )
 
 def get_procurement_answer(user_query, vector_base):
-    template = """You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
+    template = """You are an assistant for question-answering tasks. Only use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
     Context: {context}
     Answer:
     """
