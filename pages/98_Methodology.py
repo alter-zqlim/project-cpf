@@ -18,7 +18,7 @@ st.image(
 )
 
 st.image(
-    "./assets/city.jpg",
-    caption = "Watercolour ink image of a post-apocalyptic city."
+    "./assets/flow_02.jpg",
+    caption = "Answers user queries based on pre-loaded set of PDF documents. Post-retrieval process is improved through filtering by score threshold. Query is also checked for relevance to the subject matter loaded."
 )
 
