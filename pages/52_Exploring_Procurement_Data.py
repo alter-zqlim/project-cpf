@@ -39,7 +39,7 @@ df_markeddown = df.to_markdown()
 # st.bar_chart(df, y = "agency", x = "awarded_amt", y_label = "Agency", x_label = "Awarded Procurement Value")
 counts = df[data_input_index].value_counts().reset_index()
 counts.columns = [data_input_index, "count"]
-st.bar_chart(counts.sort_values(by = "count", ascending = False), y = "agency", x = "count", y_label = "Agency", x_label = "Number of Awarded Tenders")
+st.scatter_chart(counts.sort_values(by = "count", ascending = False), y = "agency", x = "count", y_label = "Agency", x_label = "Number of Awarded Tenders")
 
 
 # password checkpoint
