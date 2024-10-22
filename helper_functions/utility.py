@@ -37,6 +37,6 @@ def get_GeBIZ_data(filepath, index):
 
 # function: read, load pdf
 @st.cache_data
-def loader(filepath):
+def loader_pdf(filepath):
     loader = PyPDFLoader(filepath)
     return loader.load()
