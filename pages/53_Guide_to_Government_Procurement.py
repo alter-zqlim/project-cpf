@@ -60,6 +60,6 @@ st.markdown(
 # on detecting Submit, processes and writes response to user input
 if form.form_submit_button("Submit"):
     st.toast(f"User Input: {user_input}")
-    response = rag.get_procurement_answer(user_input, db.as_retriever())
+    response = rag.get_procurement_answer(user_input, db.as_retriever(search_type = "similarity", search_kwargs = {"k": 6}))
     st.write(response["answer"])
     
