@@ -29,6 +29,7 @@ if not utility.check_password():
 
 # specify sources
 list_pdf = ["./data/Supplier_Guide_Detailed.pdf", "./data/AUTHORITY_AND_RATIONALE_FOR_DEBARMENT.pdf", "./data/Appln_Guidelines_for_Gov_Supp_Reg.pdf"]
+list_url = ["https://www.mof.gov.sg/policies/government-procurement"]
 
 # sample queries
 st.markdown(
@@ -40,8 +41,11 @@ st.markdown(
 
 data_reference = []  # init list to store loaded docs
 for item in list_pdf:
-    pdf_pages = utility.loader(item)  # loads PDF
+    pdf_pages = utility.loader_pdf(item)  # loads PDF
     data_reference.extend(pdf_pages)
+
+for item in list_url:
+    x = 2
 
 # splitted_documents = rag.text_splitter(data_reference)  # chunks loaded docs (PDF)
 splitted_documents = rag.text_semantic_splitter(data_reference)  # semantic chunking of loaded docs (PDF)
