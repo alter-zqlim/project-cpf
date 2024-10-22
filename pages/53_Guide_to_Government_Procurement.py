@@ -36,7 +36,8 @@ for item in list_pdf:
     pdf_pages = utility.loader(item)  # loads PDF
     data_reference.extend(pdf_pages)
 
-splitted_documents = rag.text_splitter(data_reference)  # chunks loaded docs (PDF)
+# splitted_documents = rag.text_splitter(data_reference)  # chunks loaded docs (PDF)
+splitted_documents = rag.text_semantic_splitter(data_reference)  # semantic chunking of loaded docs (PDF)
 db = rag.write_vector_store(splitted_documents)  # returns vector store of chunked docs
 # st.write(db._collection.count())
 
