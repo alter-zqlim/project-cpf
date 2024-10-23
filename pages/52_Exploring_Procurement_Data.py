@@ -37,8 +37,13 @@ df = unsorted_df.sort_values(by = ["tender_no", "supplier_name", "award_date"])
 df_index = df[~df.index.duplicated(keep = "first")]
 df_markeddown = df.to_markdown()
 
-agency_list = list(df.agency.unique())[::-1]
-st.write(agency_list)
+# agency_list = list(df.agency.unique())[::-1]
+# st.write(agency_list)
+
+# selected_year = st.selectbox('Select a year', year_list, index=len(year_list)-1)
+# df_selected_year = df_reshaped[df_reshaped.year == selected_year]
+# df_selected_year_sorted = df_selected_year.sort_values(by="population", ascending=False)
+
 
 # display entire dataframe
 # st.dataframe(df, use_container_width = True)
