@@ -25,7 +25,7 @@ st.write(
     "Users can explore procurement data from GeBiz, based on various procuring agencies, from FY2019 to FY2023."
 )
 
-st.cache_data.clear()
+# st.cache_data.clear()
 
 # specify sources
 data_input_filepath = "./data/GovernmentProcurementviaGeBIZ.csv"
@@ -36,6 +36,9 @@ unsorted_df = utility.get_GeBIZ_data(data_input_filepath, data_input_index)
 df = unsorted_df.sort_values(by = ["tender_no", "supplier_name", "award_date"])
 df_index = df[~df.index.duplicated(keep = "first")]
 df_markeddown = df.to_markdown()
+
+agency_list = list(df.agency.unique())[::-1]
+st.write(agency_list)
 
 # display entire dataframe
 # st.dataframe(df, use_container_width = True)
