@@ -83,7 +83,7 @@ else:
         data = df.loc[agencies]
         st.write("## Procurement projects", data.sort_index())
     else:
-        data = df.loc[agencies, "tender_detail_status" = tender_status]
+        data = df.loc[agencies, "tender_detail_status": tender_status]
         st.write("## Procurement projects", data.sort_index())
 
 # generate a form for user input
