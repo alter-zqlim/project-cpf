@@ -84,19 +84,24 @@ with col_02:
     df["year"] = pd.to_datetime(df["award_date"], format = "%d/%m/%Y")
     list_years = df["year"].dt.year.unique().tolist()
     years = st.multiselect(
-        "Select year(s) of tender awarded",
+        "Filter information by year(s) of tender awarded",
         list_years,
         default = list_years
-)
+    )
+
+if not years:
+    st.error("Please select at least one year.")
 
 if not agencies:
     st.error("Please select at least one agency.")
 else:
     if tender_status == "All":
-        data = df.loc[agencies]
+        data_filtered = df.loc[agencies]
+        data = data_filtered.drop(columns = ["year"])
         st.write("## Procurement projects", data.sort_index())
     else:
-        data = df[(df["agency"].isin(agencies)) & (df["tender_detail_status"] == tender_status)]
+        data_filtered = df[(df["agency"].isin(agencies)) & (df["tender_detail_status"] == tender_status)]
+        data = data_filtered.drop(columns = ["year"])
         st.write("## Procurement projects", data.sort_index())
 
 # generate a form for user input
