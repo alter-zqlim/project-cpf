@@ -83,7 +83,6 @@ with col_02:
     # generate a radio selector that displays data based on tender status
     df["year"] = pd.to_datetime(df["award_date"], format = "%d/%m/%Y")
     list_years = df["year"].dt.year.unique().tolist()
-    st.write(years)
     years = st.multiselect(
         "Select year(s) of tender awarded",
         list_years,
