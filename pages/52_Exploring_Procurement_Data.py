@@ -95,7 +95,7 @@ else:
     if not agencies:
         st.error("Please select at least one agency.")
     else:
-        df_years = df.loc[year]
+        df_years = df["year"].isin(years)
         if tender_status == "All":
             data_filtered = df_years.loc[agencies]
             data = data_filtered.drop(columns = ["year"])
