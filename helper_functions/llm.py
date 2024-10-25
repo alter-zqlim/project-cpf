@@ -32,7 +32,7 @@ def get_completion(prompt, model = "gpt-4o-mini", temperature = 0, top_p = 1.0, 
       output_json_structure = None
 
     messages = [{"role": "user", "content": prompt}]
-    response = OpenAI.ChatCompletion.create(  # originally was openai.chat.completions
+    response = client.chat.completions.create(  # originally was openai.chat.completions
         model = model,
         messages = messages,
         temperature = temperature,
