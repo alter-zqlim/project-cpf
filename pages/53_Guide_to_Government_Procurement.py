@@ -31,11 +31,11 @@ data_reference = []  # init list to store loaded docs
 for item in list_pdf:
     pdf_pages = utility.loader_pdf(item)  # loads PDF
     data_reference.extend(pdf_pages)
-"""
-for item in list_url:
-    url_pages = utility.loader_url(item)  # loads URL
-    data_reference.extend(url_pages)
-"""
+
+# for item in list_url:
+    # url_pages = utility.loader_url(item)  # loads URL
+    # data_reference.extend(url_pages)
+
 # password checkpoint
 if not utility.check_password():  
     st.stop()
