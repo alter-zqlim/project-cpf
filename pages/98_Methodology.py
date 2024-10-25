@@ -25,15 +25,15 @@ st.image(
 
 st.markdown(
     """
-    - This app assists the user in their queries on government procurement in general.  
-    - It loads 3 PDF files downloaded from the GeBiz website: (i) a comprehensive guide on government procurement; (ii) a specific list of debarment or disqualification grounds; as well as (iii) registration lines.  
-    - The PDF files are stored in ./data folder, referenced through a list, and loaded using PyPDFLoader. 
-    - The PDF files are then split, chunked and stored in a vector database (Chroma). The pre-retrieval process is augmented by Semantic Chunking.  
-    - Sample queries are provided to guide the user on the type of query to input.
-    - When processing the user query, the system is given a template to answer succinctly, and only from the database.
-    - When processing the user query, the post-retrieval process is improved through filtering by score threshold. The score threshold is set at 0.5 to only retrieve documents above that threshold.  
-    - Retrieval-Augmented Generation is applied to the user query with the help of LangChain.  
-    - When returning the answer, if "context" does not exist, it would imply that the LLM is unable to find or match the query to the semantic chunks. A standard reply is given to request the user re-phrase the query.  
-    - The best-matched retrieved output is then printed below the query box.
+    This app assists the user in their queries on government procurement in general.  
+    1. It loads 3 PDF files downloaded from the GeBiz website: (i) a comprehensive guide on government procurement; (ii) a specific list of debarment or disqualification grounds; as well as (iii) registration lines.  
+    2. The PDF files are stored in ./data folder, referenced through a list, and loaded using PyPDFLoader. 
+    3. The PDF files are then split, chunked and stored in a vector database (Chroma). The pre-retrieval process is augmented by Semantic Chunking.  
+    4. Sample queries are provided to guide the user on the type of query to input.
+    5. When processing the user query, the system is given a template to answer succinctly, and only from the database.
+    6. When processing the user query, the post-retrieval process is improved through filtering by score threshold. The score threshold is set at 0.5 to only retrieve documents above that threshold.  
+    7. Retrieval-Augmented Generation is applied to the user query with the help of LangChain.  
+    8. When returning the answer, if "context" does not exist, it would imply that the LLM is unable to find or match the query to the semantic chunks. A standard reply is given to request the user re-phrase the query.  
+    9. The best-matched retrieved output is then printed below the query box.
     """
 )
