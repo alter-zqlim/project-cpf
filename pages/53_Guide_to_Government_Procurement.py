@@ -72,3 +72,16 @@ if form.form_submit_button("Submit"):
         # st.write(response)  # full answer including input, context
         st.write(response["answer"])  # answer only
     
+# generate a form for user input
+form02 = st.form(key = "form02")
+form02.subheader("General query")
+
+user_input02 = form02.text_area(
+    "Please enter your general query", 
+    height = 160
+)
+
+# on detecting Submit, processes and writes response to user input
+if form02.form_submit_button("Submit"):
+    st.toast(f"User Input: {user_input02}")
+    st.write(llm.get_completion(user_input02))
