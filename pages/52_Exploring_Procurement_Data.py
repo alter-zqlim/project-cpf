@@ -63,7 +63,8 @@ csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
 # generate a multi-option selector that displays data based on selected agencies  
 agencies = st.multiselect(
     "Select agencies",
-    list(df_index.index),
+    list(df.agency.unique())[::-1],
+    # list(df_index.index),
     ["Competition and Consumer Commission of Singapore (CCCS)"]
 )
 
