@@ -73,7 +73,7 @@ def improved_question(question):
     4. Providing more context or details.
 
     Output the improved query.
-    <user-query>The dataset lists tenders that have been awarded by Singapore government agencies from 2019 to 2024. Each tender lists details of the agency that called the tender, a description of the tender, the status and amount awarded and the supplier the tender was awarded to. {question} List the steps taken to answer the query.</user-query>
+    <user-query>The dataset lists tenders that have been awarded by Singapore government agencies from 2019 to 2024. Each tender lists details of the agency that called the tender, a description of the tender, the status and amount awarded and the supplier the tender was awarded to. {question} Answer the question and list the steps taken to answer the question.</user-query>
     """)
 
     return improved_question
