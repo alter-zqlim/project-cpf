@@ -119,4 +119,4 @@ if form.form_submit_button("Submit"):
     response = csv_agent.invoke(user_input)
     # response = pandas_agent.invoke(user_input)
     # response = llm.generate_response_based_on_procurement_data(user_input, data)  # unable to use to_markdown() because of token limit
-    st.write(response)
+    st.write(response["output"])
