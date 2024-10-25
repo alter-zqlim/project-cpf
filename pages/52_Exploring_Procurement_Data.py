@@ -116,7 +116,7 @@ user_input = form.text_area(
 # on detecting Submit, processes and writes response to user input
 if form.form_submit_button("Submit"):
     st.toast(f"User Input: {user_input}")
-    response = csv_agent.invoke(user_input)
+    response = csv_agent.invoke(llm.improved_question(user_input))
     # response = pandas_agent.invoke(user_input)
     # response = llm.generate_response_based_on_procurement_data(user_input, data)  # unable to use to_markdown() because of token limit
     st.write(response["output"])
