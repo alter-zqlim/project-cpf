@@ -60,6 +60,16 @@ if not utility.check_password():
 pandas_agent = llm.init_pandas_dataframe_agent(unsorted_df)
 csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
 
+# generate a radio selector that displays data based on tender status  
+tender_status_list = list(df.tender_detail_status.unique())[::-1]
+tender_status_list.append("All")
+tender_status = st.radio(
+    "Filter information by tender award status",
+    tender_status_list,
+    len(tender_status_list) - 1
+)
+
+
 # generate a multi-option selector that displays data based on selected agencies  
 agencies = st.multiselect(
     "Select agencies",
