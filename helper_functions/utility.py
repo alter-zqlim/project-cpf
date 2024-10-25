@@ -43,8 +43,7 @@ def loader_pdf(filepath):
     loader = PyPDFLoader(filepath)
     return loader.load()
 
-
-# function: read, load pdf
+# function: read, load url
 @st.cache_data
 def loader_url(filepath):
     loader = WebBaseLoader(filepath)
