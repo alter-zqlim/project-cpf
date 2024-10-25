@@ -91,18 +91,19 @@ with col_02:
 
 if not years:
     st.error("Please select at least one year.")
-
-if not agencies:
-    st.error("Please select at least one agency.")
 else:
-    if tender_status == "All":
-        data_filtered = df.loc[agencies]
-        data = data_filtered.drop(columns = ["year"])
-        st.write("## Procurement projects", data.sort_index())
+    if not agencies:
+        st.error("Please select at least one agency.")
     else:
-        data_filtered = df[(df["agency"].isin(agencies)) & (df["tender_detail_status"] == tender_status)]
-        data = data_filtered.drop(columns = ["year"])
-        st.write("## Procurement projects", data.sort_index())
+        df_years = df.loc[years]
+        if tender_status == "All":
+            data_filtered = df_years.loc[agencies]
+            data = data_filtered.drop(columns = ["year"])
+            st.write("## Procurement projects", data.sort_index())
+        else:
+            data_filtered = df_years[(df_years["agency"].isin(agencies)) & (df_years["tender_detail_status"] == tender_status)]
+            data = data_filtered.drop(columns = ["year"])
+            st.write("## Procurement projects", data.sort_index())
 
 # generate a form for user input
 form = st.form(key = "form")
