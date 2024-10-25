@@ -35,7 +35,7 @@ def check_password():
 @st.cache_data
 def get_GeBIZ_data(filepath, index):
     df = pd.read_csv(filepath)
-    return df.set_index(index, drop = False)
+    return df  # .set_index(index, drop = False)
 
 # function: read, load pdf
 @st.cache_data
