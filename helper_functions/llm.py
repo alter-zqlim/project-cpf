@@ -66,13 +66,14 @@ def count_tokens_from_message(messages):
 
 def improved_question(question):
     improved_question = get_completion(f"""\
-    Improve the clarity of the user question that is enclosed in a pair of <user-question>, by:
-    1. rephrasing the question to make the key points clearer.\
+    Improve the clarity of the user query that is enclosed in <user-query>, by:
+    1. Rephrasing the question to make the key points clearer.\
     2. If relevant, state the objective of the user.
-    3. if there is a term that is not clear, provide a definition or context.
-    4. providing more context or details.
+    3. If there is a term that is not clear, provide a definition or context.
+    4. Providing more context or details.
 
-    <user-question>{question}</user-question>
+    Output the improved query.
+    <user-query>{question}</user-query>
     """)
 
     return improved_question
