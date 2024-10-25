@@ -78,8 +78,10 @@ with col_01:
         tender_status_list,
         len(tender_status_list) - 1
     )
+
 with col_02:
-    # generate a radio selector that displays data based on tender status  
+    # generate a radio selector that displays data based on tender status
+    st.write("column 02")
 
 if not agencies:
     st.error("Please select at least one agency.")
