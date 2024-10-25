@@ -82,6 +82,9 @@ with col_01:
 with col_02:
     # generate a radio selector that displays data based on tender status
     st.write("column 02")
+    df["year"] = pd.to_datetime(df["award_date"], format = "%d/%m/%Y")
+    years = df["year"].dt.year.unique().tolist()
+    st.write(years)
 
 if not agencies:
     st.error("Please select at least one agency.")
