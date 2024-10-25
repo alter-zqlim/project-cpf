@@ -31,6 +31,7 @@ st.markdown(
     """
 )
 
+st.subheader(" ")
 st.subheader("II. General Guide to Government Procurement")
 st.markdown(
     """
