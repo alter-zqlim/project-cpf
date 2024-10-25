@@ -18,14 +18,17 @@ st.image(
 )
 
 st.subheader("General Guide to Government Procurement")
+st.markdown(
+    """
+    This app assists the user in their queries on government procurement in general.
+    """
+)
 st.image(
     "./assets/flow_02.jpg",
     caption = "Answers user queries based on pre-loaded set of 3 PDF documents. Pre-retrieval is improved through semantic chunking. Post-retrieval process is improved through filtering by score threshold. Query is also checked for relevance to the pre-loaded subject matter loaded."
 )
-
 st.markdown(
     """
-    This app assists the user in their queries on government procurement in general.  
     1. It loads 3 PDF files downloaded from the GeBiz website: (i) a comprehensive guide on government procurement; (ii) a specific list of debarment or disqualification grounds; as well as (iii) registration lines.  
     2. The PDF files are stored in ./data folder, referenced through a list, and loaded using PyPDFLoader. 
     3. The PDF files are then split, chunked and stored in a vector database (Chroma). The pre-retrieval process is augmented by Semantic Chunking.  
