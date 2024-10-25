@@ -67,14 +67,19 @@ agencies = st.multiselect(
     ["Competition and Consumer Commission of Singapore (CCCS)"]
 )
 
-# generate a radio selector that displays data based on tender status  
-tender_status_list = list(df.tender_detail_status.unique())[::-1]
-tender_status_list.append("All")
-tender_status = st.radio(
-    "Filter information by tender award status",
-    tender_status_list,
-    len(tender_status_list) - 1
-)
+col_01, col_02 = st.columns(2)
+
+with col_01:
+    # generate a radio selector that displays data based on tender status  
+    tender_status_list = list(df.tender_detail_status.unique())[::-1]
+    tender_status_list.append("All")
+    tender_status = st.radio(
+        "Filter information by tender award status",
+        tender_status_list,
+        len(tender_status_list) - 1
+    )
+with col_02:
+    # generate a radio selector that displays data based on tender status  
 
 if not agencies:
     st.error("Please select at least one agency.")
