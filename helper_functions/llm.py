@@ -5,7 +5,6 @@ from openai import OpenAI
 import tiktoken
 
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
-from langchain_openai import OpenAI
 from langchain_openai import ChatOpenAI
 
 from langchain_experimental.agents import create_csv_agent
