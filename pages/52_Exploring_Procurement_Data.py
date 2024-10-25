@@ -83,27 +83,26 @@ with col_02:
     # generate a radio selector that displays data based on tender status
     df["year"] = pd.to_datetime(df["award_date"], format = "%d/%m/%Y")
     list_years = df["year"].dt.year.unique().tolist()
-    years = st.multiselect(
-        "Filter information by year(s) of tender awarded",
-        list_years,
-        default = list_years
-    )
+    # years = st.multiselect(
+        # "Filter information by year(s) of tender awarded",
+        # list_years,
+        # default = list_years
+    # )
 
-if not years:
-    st.error("Please select at least one year.")
+# if not years:
+    # st.error("Please select at least one year.")
+# else:
+if not agencies:
+    st.error("Please select at least one agency.")
 else:
-    if not agencies:
-        st.error("Please select at least one agency.")
+    if tender_status == "All":
+        data_filtered = df.loc[agencies]
+        data = data_filtered.drop(columns = ["year"])
+        st.write("## Procurement projects", data.sort_index())
     else:
-        df_years = df.set_index(["agency", "year"]).loc[years]
-        if tender_status == "All":
-            data_filtered = df_years.loc[agencies]
-            data = data_filtered.drop(columns = ["year"])
-            st.write("## Procurement projects", data.sort_index())
-        else:
-            data_filtered = df_years[(df_years["agency"].isin(agencies)) & (df_years["tender_detail_status"] == tender_status)]
-            data = data_filtered.drop(columns = ["year"])
-            st.write("## Procurement projects", data.sort_index())
+        data_filtered = df[(df["agency"].isin(agencies)) & (df["tender_detail_status"] == tender_status)]
+        data = data_filtered.drop(columns = ["year"])
+        st.write("## Procurement projects", data.sort_index())
 
 # generate a form for user input
 form = st.form(key = "form")
