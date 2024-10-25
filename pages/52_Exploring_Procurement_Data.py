@@ -57,7 +57,7 @@ st.scatter_chart(counts.sort_values(by = "count", ascending = False), y = "agenc
 if not utility.check_password():  
     st.stop()
 
-pandas_agent = llm.init_pandas_dataframe_agent(unsorted_df)
+pandas_agent = llm.init_pandas_dataframe_agent(df)
 csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
 
 # generate a multi-option selector that displays data based on selected agencies  
