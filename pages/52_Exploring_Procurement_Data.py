@@ -60,6 +60,13 @@ if not utility.check_password():
 pandas_agent = llm.init_pandas_dataframe_agent(unsorted_df)
 csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
 
+# generate a multi-option selector that displays data based on selected agencies  
+agencies = st.multiselect(
+    "Select agencies",
+    list(df_index.index),
+    ["Competition and Consumer Commission of Singapore (CCCS)"]
+)
+
 # generate a radio selector that displays data based on tender status  
 tender_status_list = list(df.tender_detail_status.unique())[::-1]
 tender_status_list.append("All")
@@ -69,18 +76,15 @@ tender_status = st.radio(
     len(tender_status_list) - 1
 )
 
-
-# generate a multi-option selector that displays data based on selected agencies  
-agencies = st.multiselect(
-    "Select agencies",
-    list(df_index.index),
-    ["Competition and Consumer Commission of Singapore (CCCS)"]
-)
 if not agencies:
     st.error("Please select at least one agency.")
 else:
-    data = df.loc[agencies]
-    st.write("## Procurement projects", data.sort_index())
+    if tender_status == "All":
+        data = df.loc[agencies]
+        st.write("## Procurement projects", data.sort_index())
+    else:
+        data = df.loc[agencies, "tender_detail_status" = tender_status]
+        st.write("## Procurement projects", data.sort_index())
 
 # generate a form for user input
 form = st.form(key = "form")
