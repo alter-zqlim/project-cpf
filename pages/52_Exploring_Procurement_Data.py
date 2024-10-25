@@ -97,7 +97,8 @@ if not agencies:
     st.error("Please select at least one agency.")
 else:
     if tender_status == "All":
-        data_filtered = df.loc[agencies]
+        # data_filtered = df.loc[agencies]
+        data_filtered = df[df["agency"].isin(agencies)]
         data = data_filtered.drop(columns = ["year"])
         st.write("## Procurement projects", data.sort_index())
     else:
