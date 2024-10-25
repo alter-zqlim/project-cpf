@@ -33,7 +33,7 @@ data_input_index = "agency"
 
 # read GeBiz data file, set index to "agency", sort by specified columns, construct index with unique values
 unsorted_df = utility.get_GeBIZ_data(data_input_filepath, data_input_index)
-df = unsorted_df.sort_values(by = ["tender_no", "supplier_name", "award_date"])
+df = unsorted_df.sort_values(by = ["agency", "tender_no", "supplier_name", "award_date"])
 df_index = df[~df.index.duplicated(keep = "first")]
 df_markeddown = df.to_markdown()
 
@@ -57,7 +57,7 @@ st.scatter_chart(counts.sort_values(by = "count", ascending = False), y = "agenc
 if not utility.check_password():  
     st.stop()
 
-pandas_agent = llm.init_pandas_dataframe_agent(unsorted_df)
+pandas_agent = llm.init_pandas_dataframe_agent(df)
 csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
 
 # generate a multi-option selector that displays data based on selected agencies  
