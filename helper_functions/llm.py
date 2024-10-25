@@ -65,6 +65,19 @@ def count_tokens_from_message(messages):
     value = ' '.join([x.get('content') for x in messages])
     return len(encoding.encode(value))
 
+def improved_question(question):
+    improved_question = get_completion(f"""\
+    Improve the clarity of the user question that is enclosed in a pair of <user-question>, by:
+    1. rephrasing the question to make the key points clearer.\
+    2. If relevant, state the objective of the user.
+    3. if there is a term that is not clear, provide a definition or context.
+    4. providing more context or details.
+
+    <user-question>{question}</user-question>
+    """)
+
+    return improved_question
+
 # function: categorise user query by pre-defined types
 def check_query_type(user_query):
     system_prompt = """\
