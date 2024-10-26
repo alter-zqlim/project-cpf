@@ -86,23 +86,6 @@ with col_02:
         list(df.tender_detail_status.unique())[::-1]
         # ["Award by interface record", "Awarded by Items", "Awarded to No Suppliers", "Awarded to Suppliers"]
     )
-    # generate a radio selector that displays data based on tender status  
-    tender_status_list = list(df.tender_detail_status.unique())[::-1]
-    tender_status_list.append("All")
-    tender_status = st.radio(
-        "Filter information by tender award status for selected agencies",
-        tender_status_list,
-        len(tender_status_list) - 1
-    )
-
-    # generate a radio selector that displays data based on tender status
-    df["year"] = pd.to_datetime(df["award_date"], format = "%d/%m/%Y")
-    list_years = df["year"].dt.year.unique().tolist()
-    # years = st.multiselect(
-        # "Filter information by year(s) of tender awarded",
-        # list_years,
-        # default = list_years
-    # )
 
 # if not years:
     # st.error("Please select at least one year.")
