@@ -106,7 +106,7 @@ else:
         data = data_filtered.drop(columns = ["year"])
         st.write("## Procurement projects", data.sort_index())
 
-st.write(type(data))
+pandas_agent_alt = llm.init_pandas_dataframe_agent(data)
 
 # generate a form for user input
 form = st.form(key = "form")
@@ -122,7 +122,7 @@ if form.form_submit_button("Submit"):
     st.toast(f"User Input: {user_input}")
     # response = csv_agent.invoke(llm.improved_question(user_input))
     # response = pandas_agent.invoke(llm.improved_question(user_input))
-    response = pandas_agent.invoke(user_input)
+    response = pandas_agent_alt.invoke(user_input)
     # response = llm.generate_response_based_on_procurement_data(user_input, data)  # unable to use to_markdown() because of token limit
     st.write(response)
     # st.write(response["output"])
