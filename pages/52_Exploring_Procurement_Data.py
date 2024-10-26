@@ -81,11 +81,15 @@ with col_01:
     )
 
 with col_02:
+    # generate a multi-option selector that displays data based on tender status  
     vaulted = st.multiselect(
         "Filter information by tender award status for selected agencies",
         list(df.tender_detail_status.unique())[::-1]
         # ["Award by interface record", "Awarded by Items", "Awarded to No Suppliers", "Awarded to Suppliers"]
     )
+    # generate a radio selector that displays data based on tender status
+    df["year"] = pd.to_datetime(df["award_date"], format = "%d/%m/%Y")
+    list_years = df["year"].dt.year.unique().tolist()
 
 # if not years:
     # st.error("Please select at least one year.")
