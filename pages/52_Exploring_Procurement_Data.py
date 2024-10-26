@@ -94,7 +94,7 @@ with col_02:
 # if not years:
     # st.error("Please select at least one year.")
 # else:
-if not agencies | not tender_statuses:
+if not agencies or not tender_statuses:
     st.error("Please select at least one agency AND one tender status.")
 else:
     data_filtered = df[(df["agency"].isin(agencies)) & (df["tender_detail_status"].isin(tender_statuses))]
