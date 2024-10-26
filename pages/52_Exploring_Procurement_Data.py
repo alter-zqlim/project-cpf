@@ -106,8 +106,6 @@ else:
         data = data_filtered.drop(columns = ["year"])
         st.write("## Procurement projects", data.sort_index())
 
-pandas_agent_alt = llm.init_pandas_dataframe_agent(data)
-
 # generate a form for user input
 form = st.form(key = "form")
 form.subheader("What would you like to know about the GeBiz procurement data from FY2019 to FY2023?")
@@ -120,6 +118,7 @@ user_input = form.text_area(
 # on detecting Submit, processes and writes response to user input
 if form.form_submit_button("Submit"):
     st.toast(f"User Input: {user_input}")
+    pandas_agent_alt = llm.init_pandas_dataframe_agent(data)
     # response = csv_agent.invoke(llm.improved_question(user_input))
     # response = pandas_agent.invoke(llm.improved_question(user_input))
     response = pandas_agent_alt.invoke(llm.improved_question(user_input))
