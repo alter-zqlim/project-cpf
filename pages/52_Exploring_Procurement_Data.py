@@ -106,6 +106,8 @@ else:
         data = data_filtered.drop(columns = ["year"])
         st.write("## Procurement projects", data.sort_index())
 
+st.write(type(data))
+
 # generate a form for user input
 form = st.form(key = "form")
 form.subheader("What would you like to know about the GeBiz procurement data from FY2019 to FY2023?")
