@@ -37,7 +37,7 @@ df = unsorted_df.sort_values(by = [data_input_index, "tender_no", "supplier_name
 df_index = df[~df.index.duplicated(keep = "first")]
 df_markeddown = df.to_markdown()
 
-# agency_list = list(df.agency.unique())[::-1]
+# agency_list = list(df.agency.unique())
 # st.write(agency_list)
 
 # selected_year = st.selectbox('Select a year', year_list, index=len(year_list)-1)
