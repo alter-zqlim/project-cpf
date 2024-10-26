@@ -75,7 +75,7 @@ with col_01:
     tender_status_list = list(df.tender_detail_status.unique())[::-1]
     tender_status_list.append("All")
     tender_status = st.radio(
-        "Filter information by tender award status",
+        "Filter information by tender award status for selected agencies",
         tender_status_list,
         len(tender_status_list) - 1
     )
@@ -122,7 +122,7 @@ if form.form_submit_button("Submit"):
     st.toast(f"User Input: {user_input}")
     # response = csv_agent.invoke(llm.improved_question(user_input))
     # response = pandas_agent.invoke(llm.improved_question(user_input))
-    response = pandas_agent_alt.invoke(user_input)
+    response = pandas_agent_alt.invoke(llm.improved_question(user_input))
     # response = llm.generate_response_based_on_procurement_data(user_input, data)  # unable to use to_markdown() because of token limit
     st.write(response)
     # st.write(response["output"])
