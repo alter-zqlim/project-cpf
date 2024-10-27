@@ -54,16 +54,7 @@ def write_vector_store(splitted_documents):
     )
 
 def write_vector_store_df(df, name):
-    vector_store = Chroma(
-        collection_name = name,
-        embedding_function = OpenAIEmbeddings(model = 'text-embedding-3-small', openai_api_key = st.secrets["KEY_OPENAI_API"]),
-        persist_directory = "./chroma_db"
-    )
-    count = 1
-    for i in df:
-        vector_store.add_documents(i, count)
-        count = count + 1
-    return vector_store
+    return DataFrameLoader(df, page_content_column = name)
 
 def get_procurement_answer(user_query, vector_base):
     template = """You are an assistant for question-answering tasks. Only use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
