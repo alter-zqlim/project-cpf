@@ -38,11 +38,12 @@ df = unsorted_df.sort_values(by = [data_input_index, "tender_no", "supplier_name
 df_index = df[~df.index.duplicated(keep = "first")]
 df_markeddown = df.to_markdown()
 
-st.write(df[0])
-
 # chunking dataframe
 n = 100  # specify number of rows in each chunk
 df_list = [df[i: i + n] for i in range(0, len(df), n)]  # split into chunks
+
+splitted_documents = rag.text_semantic_splitter(df)  # semantic chunking of loaded docs (PDF)
+db = rag.write_vector_store(splitted_documents)  # returns vector store of chunked docs
 
 # agency_list = list(df.agency.unique())
 # st.write(agency_list)
@@ -52,13 +53,12 @@ df_list = [df[i: i + n] for i in range(0, len(df), n)]  # split into chunks
 # df_selected_year_sorted = df_selected_year.sort_values(by="population", ascending=False)
 
 
-# display entire dataframe
+# display chart of dataframe
 # st.dataframe(df, use_container_width = True)
 # st.bar_chart(df, y = "agency", x = "awarded_amt", y_label = "Agency", x_label = "Awarded Procurement Value")
 counts = df[data_input_index].value_counts().reset_index()
 counts.columns = [data_input_index, "count"]
 st.scatter_chart(counts.sort_values(by = "count", ascending = False), y = "agency", size = "count", y_label = "Agency", x_label = "Number of Awarded Tenders")
-
 
 # password checkpoint
 if not utility.check_password():  
