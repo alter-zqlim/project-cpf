@@ -230,6 +230,7 @@ def create_agent_analyst(pandas_tool):
         backstory = """You're the best data analyst.""",
         allow_delegation = False,
         verbose = True,
+        llm = ChatOpenAI(temperature = 0, api_key = st.secrets["KEY_OPENAI_API"], model = "gpt-4o-mini"),
         tools = [pandas_tool]
     )
     return agent_data_analyst
