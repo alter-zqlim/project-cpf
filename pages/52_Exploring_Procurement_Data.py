@@ -107,7 +107,7 @@ user_input = form.text_area(
 if form.form_submit_button("Submit"):
     st.toast(f"User Input: {user_input}")
     pandas_agent_alt = llm.init_pandas_dataframe_agent(data)
-    response_alt = rag.get_procurement_data_answer(user_input, db.as_retriever(search_type = "similarity_score_threshold", search_kwargs = {"score_threshold": 0.2}))
+    # response_alt = rag.get_procurement_data_answer(user_input, db.as_retriever(search_type = "similarity_score_threshold", search_kwargs = {"score_threshold": 0.2}))
     # pandas_agent = llm.init_pandas_dataframe_agent(df_list)
     # response = csv_agent.invoke(llm.improved_question(user_input))
     # response = pandas_agent.invoke(user_input)
@@ -115,5 +115,5 @@ if form.form_submit_button("Submit"):
     # response = llm.generate_response_based_on_procurement_data(user_input, data)  # unable to use to_markdown() because of token limit
     st.write(response)
     st.write(" ")
-    st.write(response_alt)
+    # st.write(response_alt)
     # st.write(response["output"])
