@@ -40,7 +40,6 @@ df_index = df[~df.index.duplicated(keep = "first")]
 df_markeddown = df.to_markdown()
 
 df_list = rag.load_df(df, data_input_description)  # loads df
-splitted_documents = rag.text_splitter(df_list)  # semantic chunking of loaded docs (PDF)
 
 # agency_list = list(df.agency.unique())
 # st.write(agency_list)
