@@ -31,6 +31,7 @@ st.write(
 # specify sources
 data_input_filepath = "./data/GovernmentProcurementviaGeBIZ.csv"
 data_input_index = "agency"
+data_input_description = "tender_description"
 
 # read GeBiz data file, set index to "agency", sort by specified columns, construct index with unique values
 unsorted_df = utility.get_GeBIZ_data(data_input_filepath, data_input_index)
@@ -41,7 +42,7 @@ df_markeddown = df.to_markdown()
 # chunking dataframe
 n = 25  # specify number of rows in each chunk
 df_list = [df[i: i + n] for i in range(0, len(df), n)]  # split into chunks
-# db = rag.write_vector_store_df(df_list, "collectn")  # returns vector store of chunked docs
+db = rag.write_vector_store_df(df_list, data_input_description)  # returns vector store of chunked docs
 
 # chunking dataframe _alt
 # splitted_documents = rag.text_splitter(df)  # semantic chunking of loaded docs (PDF)
