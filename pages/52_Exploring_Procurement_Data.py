@@ -5,6 +5,7 @@ import altair as alt
 
 from helper_functions import utility
 from helper_functions import llm
+from helper_functions import rag
 
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain_openai import OpenAI
