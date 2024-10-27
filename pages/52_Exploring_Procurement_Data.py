@@ -41,11 +41,10 @@ df_markeddown = df.to_markdown()
 # chunking dataframe
 n = 25  # specify number of rows in each chunk
 df_list = [df[i: i + n] for i in range(0, len(df), n)]  # split into chunks
-st.write(df_list[0])
+db = rag.write_vector_store(df_list)  # returns vector store of chunked docs
 
 # chunking dataframe _alt
 # splitted_documents = rag.text_splitter(df)  # semantic chunking of loaded docs (PDF)
-# db = rag.write_vector_store(splitted_documents)  # returns vector store of chunked docs
 
 # agency_list = list(df.agency.unique())
 # st.write(agency_list)
