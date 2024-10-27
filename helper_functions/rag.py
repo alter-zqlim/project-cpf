@@ -53,7 +53,7 @@ def write_vector_store(splitted_documents):
         persist_directory = "./chroma_db"
     )
 
-def write_vector_store_df(df, name):
+def load_df(df, name):
     return DataFrameLoader(df, page_content_column = name)
 
 def get_procurement_answer(user_query, vector_base):
