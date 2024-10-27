@@ -219,8 +219,8 @@ def init_tool(pandas_tool_agent):
         name = "Manipulate and Analyze tabular data with Code",
         func = pandas_tool_agent.invoke, # <-- This is the function that will be called when the tool is run. Note that there is no `()` at the end
         description = "Useful for search-based queries"
+        llm = ChatOpenAI(temperature = 0, api_key = st.secrets["KEY_OPENAI_API"], model = "gpt-4o-mini"),
     )
-    i = 9
     return pandas_tool
 
 def create_agent_analyst(pandas_tool):
