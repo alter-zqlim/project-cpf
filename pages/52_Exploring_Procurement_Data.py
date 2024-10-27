@@ -38,6 +38,8 @@ df = unsorted_df.sort_values(by = [data_input_index, "tender_no", "supplier_name
 df_index = df[~df.index.duplicated(keep = "first")]
 df_markeddown = df.to_markdown()
 
+st.write(df[0])
+
 # chunking dataframe
 n = 100  # specify number of rows in each chunk
 df_list = [df[i: i + n] for i in range(0, len(df), n)]  # split into chunks
