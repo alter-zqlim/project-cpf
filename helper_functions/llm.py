@@ -221,6 +221,37 @@ def init_tool(pandas_tool_agent):
     )
     return pandas_tool
 
+def create_agent_analyst(pandas_tool):
+    agent_data_analyst = Agent(
+        role = "Content Planner",
+        goal = "Analyze the data based on user query: {topic}",
+        backstory = """You're the best data analyst.""",
+        allow_delegation = False,
+        verbose = True,
+        tools = [pandas_tool]
+    )
+    return agent_data_analyst
+
+def create_task_analyst(agent_analyst):
+    task_analyze = Task(
+        description = """\
+        1. Understand the user query: {topic}.
+        2. Use the tool to analyze the data based on the user query.
+        3. Develop a comprehensive report based on the analysis.""",
+        expected_output = """\
+        A comprehensive analysis report that present the results using McKinsey's Pyramid Principle.""",
+        agent = agent_analyst
+    )
+    return task_analyze
+
+def create_crew(agent_data_analyst, task_analyze):
+    crew = Crew(
+        agents = [agent_data_analyst],
+        tasks = [task_analyze],
+        verbose = True
+    )
+    return crew
+
 def process_user_message(user_input):
     delimiter = "```"
 
