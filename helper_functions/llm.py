@@ -3,12 +3,15 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 import tiktoken
+import pandas as pd
 
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain_openai import ChatOpenAI
 
 from langchain_experimental.agents import create_csv_agent
 from langchain.agents.agent_types import AgentType
+
+from langchain.agents import Tool
 
 # all your (Open AI) password are belong to us
 KEY_OPENAI = st.secrets["KEY_OPENAI_API"]
@@ -210,6 +213,13 @@ def init_csv_agent(filepath):
     )
     return csv_agent
 
+def init_tool(pandas_tool_agent):
+    pandas_tool = Tool(
+        name = "Manipulate and Analyze tabular data with Code",
+        func = pandas_tool_agent.invoke, # <-- This is the function that will be called when the tool is run. Note that there is no `()` at the end
+        description = "Useful for search-based queries"
+    )
+    return pandas_tool
 
 def process_user_message(user_input):
     delimiter = "```"
