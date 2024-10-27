@@ -41,7 +41,6 @@ df_markeddown = df.to_markdown()
 # chunking dataframe
 n = 100  # specify number of rows in each chunk
 df_list = [df[i: i + n] for i in range(0, len(df), n)]  # split into chunks
-db = rag.write_vector_store(df_list)  # returns vector store of chunked docs
 
 # agency_list = list(df.agency.unique())
 # st.write(agency_list)
