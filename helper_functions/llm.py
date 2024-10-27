@@ -219,6 +219,7 @@ def init_tool(pandas_tool_agent):
         func = pandas_tool_agent.invoke, # <-- This is the function that will be called when the tool is run. Note that there is no `()` at the end
         description = "Useful for search-based queries"
     )
+    i = 9
     return pandas_tool
 
 def create_agent_analyst(pandas_tool):
