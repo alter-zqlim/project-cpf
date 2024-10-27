@@ -62,15 +62,6 @@ def write_vector_store_df(df, name):
         vector_store.add_documents(i)
     return vector_store
 
-# Store the vectors along with the corresponding text chunks
-for i, row in chunked_data.iterrows():
-    collection.add(
-        documents=[row['text_chunks']],  # The text chunk
-        embeddings=[row['vectors'].tolist()],  # The vector representation
-        metadatas=[{"source": "your_source"}],  # Optional metadata
-        ids=[f"chunk_{i}"]  # Unique ID for each entry
-    )
-
 def get_procurement_answer(user_query, vector_base):
     template = """You are an assistant for question-answering tasks. Only use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
     Context: {context}
