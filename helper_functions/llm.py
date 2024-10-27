@@ -12,6 +12,7 @@ from langchain_experimental.agents import create_csv_agent
 from langchain.agents.agent_types import AgentType
 
 from langchain.agents import Tool
+from crewai import Agent, Task, Crew
 
 # all your (Open AI) password are belong to us
 KEY_OPENAI = st.secrets["KEY_OPENAI_API"]
