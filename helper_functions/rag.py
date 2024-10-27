@@ -26,6 +26,9 @@ from langchain_experimental.text_splitter import SemanticChunker
 import bs4
 from langchain_community.document_loaders import WebBaseLoader
 
+from langchain.agents import Tool
+from langchain.agents.agent_types import AgentType
+
 __import__('pysqlite3')
 import sys
 import pysqlite3
