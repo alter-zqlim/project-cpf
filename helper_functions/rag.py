@@ -58,8 +58,10 @@ def write_vector_store_df(df, name):
         embedding_function = OpenAIEmbeddings(model = 'text-embedding-3-small', openai_api_key = st.secrets["KEY_OPENAI_API"]),
         persist_directory = "./chroma_db"
     )
+    count = 1
     for i in df:
-        vector_store.add_documents(i)
+        vector_store.add_documents(i, count)
+        count = count + 1
     return vector_store
 
 def get_procurement_answer(user_query, vector_base):
