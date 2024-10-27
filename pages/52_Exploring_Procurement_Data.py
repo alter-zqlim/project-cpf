@@ -39,13 +39,8 @@ df = unsorted_df.sort_values(by = [data_input_index, "tender_no", "supplier_name
 df_index = df[~df.index.duplicated(keep = "first")]
 df_markeddown = df.to_markdown()
 
-# chunking dataframe
-n = 25  # specify number of rows in each chunk
-df_list = [df[i: i + n] for i in range(0, len(df), n)]  # split into chunks
-db = rag.write_vector_store_df(df, data_input_description)  # returns vector store of chunked docs
-
-# chunking dataframe _alt
-# splitted_documents = rag.text_splitter(df)  # semantic chunking of loaded docs (PDF)
+df_list = rag.load_df(df, data_input_description)  # loads df
+splitted_documents = rag.text_splitter(df_list)  # semantic chunking of loaded docs (PDF)
 
 # agency_list = list(df.agency.unique())
 # st.write(agency_list)
