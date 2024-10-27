@@ -65,12 +65,24 @@ if not utility.check_password():
 pandas_agent = llm.init_pandas_dataframe_agent(df)
 csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
 
+agencies_default = [
+    "Agency for Science, Technology and Research",
+    "Competition and Consumer Commission of Singapore (CCCS)",
+    "Economic Development Board",
+    "Energy Market Authority of Singapore",
+    "Enterprise Singapore",
+    "Jurong Town Corporation",
+    "Sentosa Development Corporation",
+    "Singapore Tourism Board",
+    "Ministry of Trade & Industry-Ministry Headquarter",
+    "Ministry of Trade & Industry-Department of Statistics"
+]
+
 # generate a multi-option selector that displays data based on selected agencies  
 agencies = st.multiselect(
     "Select agencies",
     list(df.agency.unique()),
-    # list(df_index.index),
-    ["Competition and Consumer Commission of Singapore (CCCS)"]
+    agencies_default
 )
 
 # generate a multi-option selector that displays data based on tender status  
@@ -113,6 +125,5 @@ if form.form_submit_button("Submit"):
     response = pandas_agent_alt.invoke(user_input)
     # response = llm.generate_response_based_on_procurement_data(user_input, data)  # unable to use to_markdown() because of token limit
     st.write(response)
-    st.write(" ")
     # st.write(response_alt)
     # st.write(response["output"])
