@@ -9,10 +9,12 @@ st.set_page_config(
 st.title("About Us")
 
 st.subheader("Project scope", divider = True)
+st.write("A prototype interface for businesses to navigate government procurement, its rules, as well as better understand historical information on tenders awarded via GeBiz.")
 st.write("")
 st.subheader("Objectives", divider = True)
+st.write("Help businesses answer queries on government procurement as well as navigate and query historical procurement data. Showcase use of large language models, retrieval augmented generation as well as agents and tasks, including application of LangChain modules.")
 st.subheader("Features", divider = True)
-st.write("There are 2 apps. One is a pure query interface where users can type in queries on government procurement. Sample queries have been provided to aid the user in formulating their questions.")
+st.write("There are 2 apps available. One is purely a query interface where users can type in queries on government procurement. Sample queries have been provided to aid the user in formulating their questions. The second app allows users to filter historical government procurement data and apply queries to it.")
 
 st.subheader("Data sources", divider = True)
 st.write("Government Procurement via GeBIZ &mdash; Dataset of all open tenders put out by government agencies since FY2019. (retrieved via data.gov.sg on 11 October 2024)")
