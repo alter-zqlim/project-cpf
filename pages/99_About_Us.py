@@ -9,8 +9,10 @@ st.set_page_config(
 st.title("About Us")
 
 st.subheader("Project scope", divider = True)
+st.write("")
 st.subheader("Objectives", divider = True)
 st.subheader("Features", divider = True)
+st.write("There are 2 apps. One is a pure query interface where users can type in queries on government procurement. Sample queries have been provided to aid the user in formulating their questions.")
 
 st.subheader("Data sources", divider = True)
 st.write("Government Procurement via GeBIZ &mdash; Dataset of all open tenders put out by government agencies since FY2019. (retrieved via data.gov.sg on 11 October 2024)")
