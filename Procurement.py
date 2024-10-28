@@ -38,5 +38,6 @@ st.write("Hello Entrepreneur! Congratulations on setting up your business and we
 st.write("Note that there are **NO** procurement opportunities on this web application. Head over to https://www.gebiz.gov.sg/ to search for those opportunities.")
 st.write("Select an app on the left to get started.")
 
+st.image("./assets/image.webp")
 # manifest sidebar
 # st.sidebar.success("Select an app above.")
