@@ -52,9 +52,9 @@ df_list = rag.load_df(df, data_input_description)  # loads df
 # display chart of dataframe
 # st.dataframe(df, use_container_width = True)
 # st.bar_chart(df, y = "agency", x = "awarded_amt", y_label = "Agency", x_label = "Awarded Procurement Value")
-counts = df[data_input_index].value_counts().reset_index()
-counts.columns = [data_input_index, "count"]
-st.scatter_chart(counts.sort_values(by = "count", ascending = False), y = "agency", size = "count", y_label = "Agency", x_label = "Number of Awarded Tenders")
+# counts = df[data_input_index].value_counts().reset_index()
+# counts.columns = [data_input_index, "count"]
+# st.scatter_chart(counts.sort_values(by = "count", ascending = False), y = "agency", size = "count", y_label = "Agency", x_label = "Number of Awarded Tenders")
 
 # password checkpoint
 if not utility.check_password():  
