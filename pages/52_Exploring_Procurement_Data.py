@@ -131,6 +131,6 @@ if form.form_submit_button("Submit"):
     user_inp = {"topic": llm.improved_question(user_input)}
     response = crew.kickoff(inputs = user_inp)
     # response = llm.generate_response_based_on_procurement_data(user_input, data)  # unable to use to_markdown() because of token limit
-    st.write(response)
+    st.write(response["raw"])
     # st.write(response_alt)
     # st.write(response["output"])
