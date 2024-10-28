@@ -109,7 +109,7 @@ else:
 
 # generate a form for user input
 form = st.form(key = "form")
-form.subheader("What would you like to know about the GeBiz procurement data from FY2019 to FY2023?")
+form.subheader("What would you like to know about the above set of GeBiz procurement data from FY2019 to FY2023?")
 
 user_input = form.text_area(
     "Please enter your query below and press Submit", 
