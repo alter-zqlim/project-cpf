@@ -145,7 +145,33 @@ def check_for_malicious_intent(user_message):
     response = get_completion_by_messages(messages, max_tokens = 1)  # NEED to AMEND this
     return response  # returns "Y" if intent is malicious, and "N" if otherwise
 
+def generate_response_based_on(user_query):
+    step_delimiter = "####"
 
+    system_message = f"""
+    Follow these steps to extract and summarise the user query.
+    The user query is delimited with a pair <incoming-message> tags.
+
+    Step 1:{step_delimiter} Extract the information from the key labelled "raw". 
+
+    Step 2:{step_delimiter} Summarise the information from Step 1 in three concise sentences. Use Neural Linguistic Programming to construct your response.
+
+    Use the following format:
+    Step 1:{step_delimiter} <step 1 reasoning>
+    Step 2:{step_delimiter} <step 2 reasoning>
+    Response to user:{step_delimiter} <response to user>
+
+    Make sure to include {step_delimiter} to separate every step.
+    """
+
+    messages =  [
+        {"role": "system", "content": system_message},
+        {"role": "user", "content": f"<incoming-message>{user_query}</incoming-message>"}
+    ]
+
+    full_response = get_completion_by_messages(messages, max_tokens = 3500)
+    final_response = full_response.split(step_delimiter)[-1]
+    return final_response
 
 def generate_response_based_on_procurement_data(user_query, procurement_data):
     step_delimiter = "####"
