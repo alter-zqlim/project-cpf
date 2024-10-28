@@ -29,11 +29,6 @@ from langchain_community.document_loaders import WebBaseLoader
 from langchain.agents import Tool
 from langchain.agents.agent_types import AgentType
 
-__import__('pysqlite3')
-import sys
-import pysqlite3
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-
 def text_splitter(pages):
     text_chunking = RecursiveCharacterTextSplitter(
         separators = ["\n\n", "\n", " ", ""],
