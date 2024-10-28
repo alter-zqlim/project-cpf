@@ -22,6 +22,7 @@ st.set_page_config(
 
 # page description
 st.title("Exploring Procurement Data")
+st.image("./assets/history.jpg")
 st.write(
     "Users can explore procurement data from GeBiz, based on various procuring agencies, from FY2019 to FY2023."
 )
