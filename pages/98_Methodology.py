@@ -7,7 +7,7 @@ st.set_page_config(
 
 st.title("Methodology")
 
-st.subheader("I. General Guide to Government Procurement")
+st.subheader("I. Guide to Government Procurement")
 st.markdown(
     """
     This app assists the user in their queries on government procurement in general.
