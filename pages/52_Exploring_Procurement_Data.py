@@ -64,6 +64,10 @@ pandas_agent = llm.init_pandas_dataframe_agent(df)
 csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
 
 agencies_default = [
+    "Competition and Consumer Commission of Singapore (CCCS)"
+]
+
+agencies_default_list = [
     "Agency for Science, Technology and Research",
     "Competition and Consumer Commission of Singapore (CCCS)",
     "Economic Development Board",
@@ -115,7 +119,7 @@ user_input = form.text_area(
 # on detecting Submit, processes and writes response to user input
 if form.form_submit_button("Submit"):
     st.toast(f"User Input: {user_input}")
-    pandas_agent = llm.init_pandas_dataframe_agent(df)
+    pandas_agent = llm.init_pandas_dataframe_agent(data)
     pandas_tool = llm.init_tool(pandas_agent)
     agent_data_analyst = llm.create_agent_analyst(pandas_tool)
     task_analyze = llm.create_task_analyst(agent_data_analyst)
