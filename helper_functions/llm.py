@@ -77,7 +77,7 @@ def improved_question(question):
     4. Providing more context or details.
 
     Only output the improved query.
-    <user-query>The dataset lists tenders that have been awarded by Singapore government agencies from 2019 to 2024. Each row represents a tender, and lists details of the agency that called the tender, a description of the tender, the status of the tender, the amount awarded for the tender and the supplier the tender was awarded to. {question} </user-query>
+    <user-query>{question}</user-query>
     """)
 
     return improved_question
@@ -227,7 +227,7 @@ def create_agent_analyst(pandas_tool):
     agent_data_analyst = Agent(
         role = "Content Planner",
         goal = "Analyze the data based on user query: {topic}",
-        backstory = """You're the best data analyst.""",
+        backstory = """You're the best data analyst who has just been given a dataset that lists tenders that have been awarded by Singapore government agencies from 2019 to 2024. Each row represents a tender, and lists details of the agency that called the tender, a description of the tender, the status of the tender, the amount awarded for the tender and the supplier the tender was awarded to. """,
         allow_delegation = False,
         verbose = True,
         llm = ChatOpenAI(temperature = 0, api_key = st.secrets["KEY_OPENAI_API"], model = "gpt-4o-mini"),
