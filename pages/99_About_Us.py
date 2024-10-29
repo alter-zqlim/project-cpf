@@ -28,5 +28,6 @@ st.markdown(
     - Registration Guidelines for Government Supplier Registration
     """
 )
+st.write(" ")
 st.image("./assets/beach.jpg")
 # st.write("Frequently Asked Questions &mdash; https://www.gebiz.gov.sg/faq.html (linked on 12 October 2024)")
