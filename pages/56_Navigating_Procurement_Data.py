@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+import csv
 # import plotly.express as px
 
 from helper_functions import utility
@@ -13,6 +14,11 @@ document = Document(
     page_content = "Hello, world!",
     metadata = {"source": "https://example.com"}
 )
+
+docs = []
+
+columns_to_embed = ["tender_description"]
+columns_to_metadata = ["tender_no", "agency", "award_date", "tender_detail_status", "supplier_name", "awarded_amt"]
 
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain_openai import OpenAI
