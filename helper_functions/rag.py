@@ -34,6 +34,16 @@ from langchain_community.document_loaders import WebBaseLoader
 from langchain.agents import Tool
 from langchain.agents.agent_types import AgentType
 
+def char_splitter(docs):
+    splitter = CharacterTextSplitter(
+        separator = "\n",
+        chunk_size = 500,
+        chunk_overlap = 0,
+        length_function = len
+    )
+    documents = splitter.split_documents(docs)
+    return documents
+
 def text_splitter(pages):
     text_chunking = RecursiveCharacterTextSplitter(
         separators = ["\n\n", "\n", " ", ""],
