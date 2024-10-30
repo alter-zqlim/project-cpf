@@ -15,11 +15,6 @@ document = Document(
     metadata = {"source": "https://example.com"}
 )
 
-docs = []
-
-columns_to_embed = ["tender_description"]
-columns_to_metadata = ["tender_no", "agency", "award_date", "tender_detail_status", "supplier_name", "awarded_amt"]
-
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain_openai import OpenAI
 from langchain_openai import ChatOpenAI
@@ -46,6 +41,21 @@ st.write(
 data_input_filepath = "./data/GovernmentProcurementviaGeBIZ.csv"
 data_input_index = "agency"
 data_input_description = "tender_description"
+
+docs = []
+columns_to_embed = ["tender_description"]
+columns_to_metadata = ["tender_no", "agency", "award_date", "tender_detail_status", "supplier_name", "awarded_amt"]
+
+with open(data_input_filepath, newline = "", encoding = "utf-8-sig") as csvfile:
+    csv_reader = csv.DictReader(csvfile)
+    for i, row in enumerate(csv_reader):
+        to_metadata = {col: row[col] for col in columns_to_metadata if col in row}
+        values_to_embed = {k: row[k] for k in columns_to_embed if k in row}
+        to_embed = "\n".join(f"{k.strip()}: {v.strip()}" for k, v in values_to_embed.items())
+        newDoc = Document(page_content = to_embed, metadata = to_metadata)
+        docs.append(newDoc)
+
+st.write(docs[0])
 
 # read GeBiz data file, set index to "agency", sort by specified columns, construct index with unique values
 unsorted_df = utility.get_GeBIZ_data(data_input_filepath, data_input_index)
