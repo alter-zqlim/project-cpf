@@ -7,6 +7,13 @@ from helper_functions import utility
 from helper_functions import llm
 from helper_functions import rag
 
+from langchain_core.documents import Document
+
+document = Document(
+    page_content = "Hello, world!",
+    metadata = {"source": "https://example.com"}
+)
+
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain_openai import OpenAI
 from langchain_openai import ChatOpenAI
