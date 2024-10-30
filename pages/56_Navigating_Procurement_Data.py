@@ -48,6 +48,9 @@ with open(data_input_filepath, newline = "", encoding = "utf-8-sig") as csvfile:
         docs.append(newDoc)
 
 gebiz_documents = rag.char_splitter(docs)
+db = rag.write_vector_store(gebiz_documents)  # returns vector store of chunked docs
+st.write(db._collection.count())
+
 
 # read GeBiz data file, set index to "agency", sort by specified columns, construct index with unique values
 unsorted_df = utility.get_GeBIZ_data(data_input_filepath, data_input_index)
