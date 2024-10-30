@@ -1,19 +1,12 @@
 import streamlit as st
 import pandas as pd
-import altair as alt
 import csv
-# import plotly.express as px
 
 from helper_functions import utility
 from helper_functions import llm
 from helper_functions import rag
 
 from langchain_core.documents import Document
-
-document = Document(
-    page_content = "Hello, world!",
-    metadata = {"source": "https://example.com"}
-)
 
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain_openai import OpenAI
@@ -39,13 +32,12 @@ st.write(
 
 # specify sources
 data_input_filepath = "./data/GovernmentProcurementviaGeBIZ.csv"
+columns_to_embed = ["tender_description"]
+columns_to_metadata = ["tender_no", "agency", "award_date", "tender_detail_status", "supplier_name", "awarded_amt"]
 data_input_index = "agency"
 data_input_description = "tender_description"
 
 docs = []
-columns_to_embed = ["tender_description"]
-columns_to_metadata = ["tender_no", "agency", "award_date", "tender_detail_status", "supplier_name", "awarded_amt"]
-
 with open(data_input_filepath, newline = "", encoding = "utf-8-sig") as csvfile:
     csv_reader = csv.DictReader(csvfile)
     for i, row in enumerate(csv_reader):
