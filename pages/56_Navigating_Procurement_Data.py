@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import csv
-import json
 
 from helper_functions import utility
 from helper_functions import llm
@@ -50,7 +49,7 @@ with open(data_input_filepath, newline = "", encoding = "utf-8-sig") as csvfile:
         newDoc = Document(page_content = to_embed, metadata = to_metadata)
         docs.append(newDoc)
 
-st.write(docs[0])
+st.write(str(docs[0]))
 
 # gebiz_documents = rag.char_splitter(docs)
 # db = rag.write_vector_store(gebiz_documents)  # returns vector store of split docs
