@@ -48,13 +48,9 @@ with open(data_input_filepath, newline = "", encoding = "utf-8-sig") as csvfile:
         values_to_embed = {k: row[k] for k in columns_to_embed if k in row}
         to_embed = "\n".join(f"{k.strip()}: {v.strip()}" for k, v in values_to_embed.items())
         newDoc = Document(page_content = to_embed, metadata = to_metadata)
-        dict_as_string = json.dumps(newDoc)
-        r = llm.count_tokens(dict_as_string)
-        if(r > max_tokens):
-            max_tokens = r
         docs.append(newDoc)
 
-st.write(max_tokens)
+st.write(docs[0])
 
 # gebiz_documents = rag.char_splitter(docs)
 # db = rag.write_vector_store(gebiz_documents)  # returns vector store of split docs
