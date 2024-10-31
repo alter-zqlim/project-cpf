@@ -114,9 +114,9 @@ user_input = form.text_area(
 # on detecting Submit, processes and writes response to user input
 if form.form_submit_button("Submit"):
     st.toast(f"User Input: {user_input}")
-    response = rag.get_procurement_answer(user_input, db.as_retriever(search_type = "similarity_score_threshold", search_kwargs = {"score_threshold": 0.2}))
-    if(response["context"] == []):
-        st.write("I do not have the answer to that. Please rephrase your query or try a different one.")
-    else:
+    #response = rag.get_procurement_answer(user_input, db.as_retriever(search_type = "similarity_score_threshold", search_kwargs = {"score_threshold": 0.2}))
+    #if(response["context"] == []):
+       # st.write("I do not have the answer to that. Please rephrase your query or try a different one.")
+    #else:
         # st.write(response)  # full answer including input, context
-        st.write(response["answer"])  # answer only
+       # st.write(response["answer"])  # answer only
