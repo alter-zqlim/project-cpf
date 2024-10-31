@@ -61,9 +61,6 @@ db = rag.write_vector_store(gebiz_documents)  # returns vector store of split do
 if not utility.check_password():  
     st.stop()
 
-pandas_agent = llm.init_pandas_dataframe_agent(df)
-csv_agent = llm.init_csv_agent("./data/GovernmentProcurementviaGeBIZ.csv")
-
 agencies_default_list = [
     "Competition and Consumer Commission of Singapore (CCCS)"
 ]
