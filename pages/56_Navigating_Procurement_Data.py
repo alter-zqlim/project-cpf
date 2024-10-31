@@ -49,7 +49,7 @@ with open(data_input_filepath, newline = "", encoding = "utf-8-sig") as csvfile:
         docs.append(newDoc)
 
 max_tokens = 0
-st.write(llm.count_tokens(docs[0]))
+st.write(llm.count_tokens_from_message(docs[0]))
 for i in docs:
     max_tokens = 1
 
