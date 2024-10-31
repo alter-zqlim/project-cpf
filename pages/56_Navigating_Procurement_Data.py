@@ -39,6 +39,7 @@ columns_to_metadata = ["tender_no", "agency", "award_date", "tender_detail_statu
 
 # split and write data to vector store
 docs = []
+max_tokens = 0
 with open(data_input_filepath, newline = "", encoding = "utf-8-sig") as csvfile:
     csv_reader = csv.DictReader(csvfile)
     for i, row in enumerate(csv_reader):
@@ -46,10 +47,12 @@ with open(data_input_filepath, newline = "", encoding = "utf-8-sig") as csvfile:
         values_to_embed = {k: row[k] for k in columns_to_embed if k in row}
         to_embed = "\n".join(f"{k.strip()}: {v.strip()}" for k, v in values_to_embed.items())
         newDoc = Document(page_content = to_embed, metadata = to_metadata)
+        if(k = llm.count_tokens(to_embed + to_metadata) > max_tokens):
+            max_tokens = k
         docs.append(newDoc)
 
 max_tokens = 0
-st.write(llm.count_tokens_from_message(docs[0]))
+st.write(max_tokens)
 for i in docs:
     max_tokens = 1
 
