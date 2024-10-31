@@ -49,10 +49,10 @@ with open(data_input_filepath, newline = "", encoding = "utf-8-sig") as csvfile:
         newDoc = Document(page_content = to_embed, metadata = to_metadata)
         docs.append(newDoc)
         r = str(newDoc)
-        if(r > max_token):
-            max_token = r
+        if(r > max_tokens):
+            max_tokens = r
             
-st.write(max_token)
+st.write(max_tokens)
 # gebiz_documents = rag.char_splitter(docs)
 # db = rag.write_vector_store(gebiz_documents)  # returns vector store of split docs
 # st.write(db._collection.count())
