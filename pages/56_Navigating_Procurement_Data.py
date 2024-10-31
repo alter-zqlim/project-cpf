@@ -47,7 +47,8 @@ with open(data_input_filepath, newline = "", encoding = "utf-8-sig") as csvfile:
         values_to_embed = {k: row[k] for k in columns_to_embed if k in row}
         to_embed = "\n".join(f"{k.strip()}: {v.strip()}" for k, v in values_to_embed.items())
         newDoc = Document(page_content = to_embed, metadata = to_metadata)
-        if(k = llm.count_tokens(to_embed + to_metadata) > max_tokens):
+        k = llm.count_tokens(to_embed + to_metadata)
+        if(k > max_tokens):
             max_tokens = k
         docs.append(newDoc)
 
