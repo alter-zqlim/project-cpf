@@ -48,8 +48,13 @@ with open(data_input_filepath, newline = "", encoding = "utf-8-sig") as csvfile:
         newDoc = Document(page_content = to_embed, metadata = to_metadata)
         docs.append(newDoc)
 
-gebiz_documents = rag.char_splitter(docs)
-db = rag.write_vector_store(gebiz_documents)  # returns vector store of split docs
+max_tokens = 0
+st.write(llm.count_tokens(docs[0]))
+for i in docs:
+    max_tokens = 1
+
+# gebiz_documents = rag.char_splitter(docs)
+# db = rag.write_vector_store(gebiz_documents)  # returns vector store of split docs
 # st.write(db._collection.count())
 
 # password checkpoint
