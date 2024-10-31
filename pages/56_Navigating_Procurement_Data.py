@@ -47,15 +47,13 @@ with open(data_input_filepath, newline = "", encoding = "utf-8-sig") as csvfile:
         values_to_embed = {k: row[k] for k in columns_to_embed if k in row}
         to_embed = "\n".join(f"{k.strip()}: {v.strip()}" for k, v in values_to_embed.items())
         newDoc = Document(page_content = to_embed, metadata = to_metadata)
-        k = llm.count_tokens(to_embed + to_metadata)
-        if(k > max_tokens):
-            max_tokens = k
+        documents_as_string = "\n".join(docu.text for docu in newDoc)
+        r = llm.count_tokens(documents_as_string)
+        if(r > max_tokens):
+            max_tokens = r
         docs.append(newDoc)
 
-max_tokens = 0
 st.write(max_tokens)
-for i in docs:
-    max_tokens = 1
 
 # gebiz_documents = rag.char_splitter(docs)
 # db = rag.write_vector_store(gebiz_documents)  # returns vector store of split docs
