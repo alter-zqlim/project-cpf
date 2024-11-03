@@ -46,8 +46,8 @@ st.markdown(
     """
     1. It loads a CSV file downloaded from the data.gov.sg relating to historical procurement data from GeBiz, for the period of FY2019 to FY2023.  
     2. Users are able to filter the information by selecting one or more agencies, as well as status of the tenders. 
-    3. Depending on selections made, an empty set may exist or users will be prompted to select at least one agency AND one status.  
+    3. Depending on selections made, an empty set may exist. Users will be prompted to select at least one agency AND one status in order to ensure there is a valid set of data to display.  
     4. Users are able to apply queries on the filtered set of data.  
-    5. A Crew is set up with Agents and Task. The Crew will analyse the filtered data, the user query, and output its raw analysis.
+    5. A pandas dataframe agent will analyse the filtered data, the user query, and print the output.  
     """
 )
