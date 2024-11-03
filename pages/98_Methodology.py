@@ -48,6 +48,7 @@ st.markdown(
     2. Users are able to filter the information by selecting one or more agencies, as well as status of the tenders. 
     3. Depending on selections made, an empty set may exist. Users will be prompted to select at least one agency AND one status in order to ensure there is a valid set of data to display.  
     4. Users are able to apply queries on the filtered set of data.  
-    5. A pandas dataframe agent will analyse the filtered data, the user query, and print the output.  
+    5. The query is transformed by parsing it through an LLM query to improve its clarity.  
+    6. A pandas dataframe agent will analyse the filtered data, the clarified user query, and print the output.  
     """
 )
