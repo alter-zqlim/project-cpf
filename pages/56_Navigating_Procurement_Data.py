@@ -33,7 +33,10 @@ st.write(
 )
 
 # st.cache_data.clear()
-
+# password checkpoint
+if not utility.check_password():  
+    st.stop()
+    
 # specify sources
 data_input_filepath = "./data/GovernmentProcurementviaGeBIZ.csv"
 
@@ -57,9 +60,7 @@ gebiz_documents = rag.char_splitter(docs)
 db = rag.write_vector_store(gebiz_documents)  # returns vector store of split docs
 # st.write(db._collection.count())
 
-# password checkpoint
-if not utility.check_password():  
-    st.stop()
+
 
 agencies_default_list = [
     "Competition and Consumer Commission of Singapore (CCCS)"
@@ -77,30 +78,6 @@ agencies_default_list_alt = [
     "Ministry of Trade & Industry-Ministry Headquarter",
     "Ministry of Trade & Industry-Department of Statistics"
 ]
-
-# read GeBiz data file, set index to "agency", sort by specified columns, construct index with unique values
-unsorted_df = utility.get_GeBIZ_data(data_input_filepath, data_input_index)
-df = unsorted_df.sort_values(by = [data_input_index, "tender_no", "supplier_name", "award_date"])
-
-# generate a multi-option selector that displays data based on selected agencies  
-agencies = st.multiselect(
-    "Select agencies",
-    list(df.agency.unique()),
-    agencies_default_list
-)
-
-# generate a multi-option selector that displays data based on tender status  
-tender_statuses = st.multiselect(
-    "Filter information by tender award status for selected agencies",
-    list(df.tender_detail_status.unique())[::-1],
-    ["Award by interface record", "Awarded by Items", "Awarded to No Suppliers", "Awarded to Suppliers"]
-)
-
-if not agencies or not tender_statuses:
-    st.error("Please select at least one agency AND one tender status.")
-else:
-    data = df[(df["agency"].isin(agencies)) & (df["tender_detail_status"].isin(tender_statuses))]
-    st.write("## Procurement projects", data.sort_index())
 
 # generate a form for user input
 form = st.form(key = "form")
