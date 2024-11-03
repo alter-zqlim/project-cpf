@@ -121,19 +121,19 @@ user_input = form.text_area(
 if form.form_submit_button("Submit"):
     st.toast(f"User Input: {user_input}")
     pandas_agent = llm.init_pandas_dataframe_agent(data)
-    pandas_tool = llm.init_tool(pandas_agent)
-    agent_data_analyst = llm.create_agent_analyst(pandas_tool)
-    task_analyze = llm.create_task_analyst(agent_data_analyst)
-    crew = llm.create_crew(agent_data_analyst, task_analyze)
+    # pandas_tool = llm.init_tool(pandas_agent)
+    # agent_data_analyst = llm.create_agent_analyst(pandas_tool)
+    # task_analyze = llm.create_task_analyst(agent_data_analyst)
+    # crew = llm.create_crew(agent_data_analyst, task_analyze)
     # response_alt = rag.get_procurement_data_answer(user_input, db.as_retriever(search_type = "similarity_score_threshold", search_kwargs = {"score_threshold": 0.2}))
     # pandas_agent = llm.init_pandas_dataframe_agent(df_list)
     # response = csv_agent.invoke(llm.improved_question(user_input))
-    # response = pandas_agent.invoke(user_input)
     prompt_updated = llm.improved_question(user_input)
     st.write(prompt_updated)
-    user_inp = {"topic": prompt_updated}
-    response = crew.kickoff(inputs = user_inp)
+    response = pandas_agent.invoke(prompt_updated)
+    st.write(response["output"])
+    # user_inp = {"topic": prompt_updated}
+    # response = crew.kickoff(inputs = user_inp)
     # response = llm.generate_response_based_on_procurement_data(user_input, data)  # unable to use to_markdown() because of token limit
-    st.write(response)
+    # st.write(response)
     # st.write(response_alt)
-    # st.write(response["output"])
