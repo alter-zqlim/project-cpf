@@ -37,7 +37,7 @@ from langchain.agents.agent_types import AgentType
 def char_splitter(docs):
     splitter = CharacterTextSplitter(
         separator = "\n",
-        chunk_size = 500,
+        chunk_size = 1024,
         chunk_overlap = 0,
         length_function = len
     )
