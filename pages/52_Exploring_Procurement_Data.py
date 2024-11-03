@@ -129,7 +129,9 @@ if form.form_submit_button("Submit"):
     # pandas_agent = llm.init_pandas_dataframe_agent(df_list)
     # response = csv_agent.invoke(llm.improved_question(user_input))
     # response = pandas_agent.invoke(user_input)
-    user_inp = {"topic": llm.improved_question(user_input)}
+    prompt_updated = llm.improved_question(user_input)
+    st.write(prompt_updated)
+    user_inp = {"topic": prompt_updated}
     response = crew.kickoff(inputs = user_inp)
     # response = llm.generate_response_based_on_procurement_data(user_input, data)  # unable to use to_markdown() because of token limit
     st.write(response)
