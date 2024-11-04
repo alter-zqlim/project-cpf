@@ -40,7 +40,7 @@ st.markdown(
 )
 st.image(
     "./assets/flow_01.jpg",
-    caption = "Answers user queries based on their preferred set of filtered information. Use of Agents and Tasks to analyse data and answer query."
+    caption = "Answers user queries based on their preferred set of filtered information. Transforms user query to improve clarity. Use of pandas DataFrame agent to analyse data and answer query."
 )
 st.markdown(
     """
@@ -49,6 +49,6 @@ st.markdown(
     3. Depending on selections made, an empty set may exist. Users will be prompted to select at least one agency AND one status in order to ensure there is a valid set of data to display.  
     4. Users are able to apply queries on the filtered set of data.  
     5. The query is transformed by parsing it through an LLM query to improve its clarity.  
-    6. A pandas dataframe agent will analyse the filtered data, the clarified user query, and print the output.  
+    6. A pandas DataFrame agent will analyse the filtered data, the clarified user query, and print the output.  
     """
 )
