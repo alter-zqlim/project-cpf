@@ -129,7 +129,7 @@ if form.form_submit_button("Submit"):
     # pandas_agent = llm.init_pandas_dataframe_agent(df_list)
     # response = csv_agent.invoke(llm.improved_question(user_input))
     prompt_updated = llm.improved_question(user_input)
-    st.write(prompt_updated)
+    # st.write(prompt_updated)
     response = pandas_agent.invoke(prompt_updated)
     st.write(response["output"])
     # user_inp = {"topic": prompt_updated}
