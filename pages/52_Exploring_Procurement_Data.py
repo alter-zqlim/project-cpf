@@ -131,6 +131,7 @@ if form.form_submit_button("Submit"):
     prompt_updated = llm.improved_question(user_input)
     # st.write(prompt_updated)
     response = pandas_agent.invoke(prompt_updated)
+    st.write(response)
     st.write(response["output"])
     # user_inp = {"topic": prompt_updated}
     # response = crew.kickoff(inputs = user_inp)
